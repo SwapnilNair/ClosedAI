@@ -84,7 +84,7 @@ export const suggestedQuestions = [
   "Tell me about Swapnil's background",
   "How can I contact Swapnil?",
   "What is Swapnil working on?",
-  "What are Swapnil's best projects?",
+  // "What are Swapnil's best projects?",
   "What technologies does Swapnil use?",
 ];
 

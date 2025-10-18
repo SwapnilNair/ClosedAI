@@ -111,6 +111,40 @@ export default function Sidebar({
           </button>
         </div>
 
+        {/* Blog Button */}
+        <div className="p-1">
+          <a
+            href="/blog"
+            className={`w-full flex items-center gap-2 py-2.5 rounded-lg transition-all duration-300 group cursor-pointer ${isDark
+                ? 'text-white/90 hover:bg-white/10'
+                : 'text-gray-700 hover:bg-gray-100'
+              } ${isCollapsed
+                ? 'justify-center px-2'
+                : 'px-3'
+              }`}
+            title={isCollapsed ? 'Blog' : ''}
+            aria-label="Blog"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5 flex-shrink-0"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+
+            {!isCollapsed && (
+              <span className="text-sm font-medium whitespace-nowrap">
+                Blog
+              </span>
+            )}
+          </a>
+        </div>
+
         {/* Conversations List */}
         <div className="flex-1 overflow-y-auto overflow-x-hidden px-1 py-2 space-y-1">
           {conversations.map((conversation) => (

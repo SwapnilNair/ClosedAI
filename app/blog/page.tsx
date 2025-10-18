@@ -1,15 +1,16 @@
-import { BlogPosts } from 'app/components/posts'
+import { getBlogPosts } from './utils';
+import BlogPageContent from './BlogPageContent';
+import { ThemeProvider } from '../context/ThemeContext';
 
-export const metadata = {
-  title: 'Blog',
-  description: 'Read my blog.',
-}
+export default function BlogPage() {
+  // Fetch posts at build time (static generation)
+  const posts = getBlogPosts().sort((a, b) =>
+    new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+  );
 
-export default function Page() {
   return (
-    <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Blog</h1>
-      <BlogPosts />
-    </section>
-  )
+    <ThemeProvider>
+      <BlogPageContent posts={posts} />
+    </ThemeProvider>
+  );
 }

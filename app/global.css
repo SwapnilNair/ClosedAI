@@ -33,6 +33,12 @@ html {
   min-width: 360px;
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 
@@ -48,12 +54,20 @@ html {
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply underline transition-all decoration-neutral-400 underline-offset-2 decoration-[0.1em] text-neutral-800;
+}
+
+.dark .prose a {
+  @apply decoration-neutral-600 text-neutral-200;
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
+  @apply text-neutral-300;
   content: '#';
+}
+
+.dark .prose .anchor:after {
+  @apply text-neutral-700;
 }
 
 .prose *:hover > .anchor {
@@ -61,11 +75,19 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply bg-neutral-50 rounded-lg overflow-x-auto border border-neutral-200 py-2 px-3 text-sm;
+}
+
+.dark .prose pre {
+  @apply bg-neutral-900 border-neutral-900;
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-lg text-neutral-900;
+}
+
+.dark .prose code {
+  @apply text-neutral-100;
 }
 
 .prose pre code {
@@ -84,35 +106,84 @@ html {
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-4 text-neutral-800;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2 text-neutral-900;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-neutral-900;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-neutral-900;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-lg font-medium tracking-tight mt-6 mb-2 text-neutral-900;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-medium text-neutral-900;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 text-neutral-800;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 text-neutral-800;
+}
+
+.prose li {
+  @apply text-neutral-800;
+}
+
+.prose blockquote {
+  @apply text-neutral-800;
+}
+
+/* Dark mode prose styles */
+.dark .prose p {
+  @apply text-neutral-200;
+}
+
+.dark .prose h1 {
+  @apply text-neutral-100;
+}
+
+.dark .prose h2 {
+  @apply text-neutral-100;
+}
+
+.dark .prose h3 {
+  @apply text-neutral-100;
+}
+
+.dark .prose h4 {
+  @apply text-neutral-100;
+}
+
+.dark .prose strong {
+  @apply text-neutral-100;
+}
+
+.dark .prose ul {
+  @apply text-neutral-200;
+}
+
+.dark .prose ol {
+  @apply text-neutral-200;
+}
+
+.dark .prose li {
+  @apply text-neutral-200;
+}
+
+.dark .prose blockquote {
+  @apply text-neutral-200;
 }
 
 .prose > :first-child {

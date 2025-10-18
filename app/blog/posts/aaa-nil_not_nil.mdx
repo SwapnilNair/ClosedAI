@@ -1,0 +1,535 @@
+---
+title: 'Golang: When Nil Is Not Nil'
+publishedAt: '2025-04-08'
+summary: 'Explore how you might not understand how nil works in Go and why your nil checks might be lying to you'
+---
+
+*A quirky blog about Go's interface system and why your nil checks might be lying to you, i.e., nil != nil*
+
+Picture this: you've built a factory function that returns a pointer to an initialised struct, and you write what seems like perfectly reasonable Go code. You have an interface, a struct that implements it, and a simple nil check. Everything looks correct, but when you run it, your program behaves in a way that defies logic; a panic occurs due to a nil pointer dereference, but the value is nil in VSCode's debugger.
+
+```go
+package main
+
+import "fmt"
+
+type UserIFace interface {
+	GetName() string
+}
+
+type User struct {
+	Name string
+}
+
+func (u *User) GetName() string {
+	return u.Name
+}
+
+func getUser(id string) *User {
+	if id == "" {
+		return nil
+	}
+	return &User{Name: "Swapnil"}
+}
+
+func main() {
+	var user UserIFace = getUser("")
+
+	if user == nil {
+		fmt.Println("User is nil, as expected")
+	} else {
+		fmt.Println("Wait... what? User is NOT nil?")
+	}
+}
+```
+
+Run this code, and you'll see: "Wait... what? User is NOT nil?"
+
+Your `getUser("")` function clearly returns `nil`, yet `user == nil` evaluates to `false`. If you're scratching your head right now, you're experiencing one of Go's most important and misunderstood concepts: **how interfaces actually work**.
+
+## Understanding Go Interfaces: More Than Meets the Eye
+
+To understand why this happens, we need to dig deep into what Go interfaces actually are. Most developers think of interfaces as simple contracts or abstract types, but in Go, they're much more sophisticated. I learnt this the hard way, and it took me a while to understand why my code was panicking and having to explain to my architect that I didn't screw up the factory function or skimp on the nil checks. 
+
+### The Anatomy of a Go Interface
+
+A Go interface is not just a pointer or a simple value. Under the hood, it's a data structure that contains two crucial pieces of information:
+
+1. **Type information** (`_type`): A pointer to the concrete type's metadata
+2. **Data information** (`data`): A pointer to the actual value
+
+```
+Interface Structure:
+┌─────────────┐
+│    _type    │ ──→ Points to *User type metadata
+├─────────────┤
+│    data     │ ──→ Points to nil (no actual User instance)
+└─────────────┘
+```
+
+When you declare `var user UserIFace = getUser("")`, here's what happens step by step:
+
+1. `getUser("")` returns `(*User)(nil)` - a nil pointer of type `*User`
+2. Go's compiler sees you're assigning this to a `UserIFace` interface.
+3. Go creates an interface value with:
+   - `_type`: pointing to `*User` type information
+   - `data`: `nil` (since the pointer is nil)
+
+The critical insight: **An interface is considered nil only when both `_type` and `data` are nil**. This is why the original example prints "User is NOT nil" - the interface contains type information about `*User` even though the actual value is nil. You cannot swap the nils; they are not the same. (Did I sneak in a terrible pun there? Well, yes, yes I did)
+
+### The Two Types of Nil in Go
+
+In Go, there are actually two different kinds of "nil" when it comes to interfaces:
+
+```go
+// Type 1: Completely nil interface (both type and data are nil)
+var completelyNil UserIFace = nil
+fmt.Printf("completelyNil == nil: %v\n", completelyNil == nil) // true
+
+// Type 2: Interface with nil value but concrete type info
+var nilUser *User = nil
+var interfaceWithNilUser UserIFace = nilUser
+fmt.Printf("interfaceWithNilUser == nil: %v\n", interfaceWithNilUser == nil) // false
+```
+
+This is why the original example prints "User is NOT nil" - the interface contains type information about `*User` even though the actual value is nil.
+
+## Exploring the Behaviour with Reflection
+
+Let's examine what's happening inside these interfaces using reflection
+(PS: if you ever want to dump the internals of a struct / return value, instead of reflect, try [go-spew](https://github.com/davecgh/go-spew) instead; I found it to be more readable and easier to use than manually writing a reflect-and-print function.)
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+	"unsafe"
+)
+
+type UserIFace interface {
+	GetName() string
+}
+
+type User struct {
+	Name string
+}
+
+func (u *User) GetName() string {
+	return u.Name
+}
+
+func main() {
+	// Scenario 1: Completely nil interface
+	var nilInterface UserIFace = nil
+	
+	// Scenario 2: Interface containing a nil *User
+	var nilUser *User = nil
+	var interfaceWithNilUser UserIFace = nilUser
+	
+	// Scenario 3: Interface containing actual User
+	var realUser *User = &User{Name: "Swapnil"}
+	var interfaceWithRealUser UserIFace = realUser
+
+	fmt.Println("=== Analyzing Interface Contents ===")
+	
+	fmt.Printf("nilInterface:\n")
+	fmt.Printf("  Value: %v\n", nilInterface)
+	fmt.Printf("  == nil: %v\n", nilInterface == nil)
+	fmt.Printf("  Type: %v\n", reflect.TypeOf(nilInterface))
+	fmt.Printf("  ValueOf IsValid: %v\n", reflect.ValueOf(nilInterface).IsValid())
+	
+	fmt.Printf("\ninterfaceWithNilUser:\n")
+	fmt.Printf("  Value: %v\n", interfaceWithNilUser)
+	fmt.Printf("  == nil: %v\n", interfaceWithNilUser == nil)
+	fmt.Printf("  Type: %v\n", reflect.TypeOf(interfaceWithNilUser))
+	fmt.Printf("  ValueOf IsNil: %v\n", reflect.ValueOf(interfaceWithNilUser).IsNil())
+	
+	fmt.Printf("\ninterfaceWithRealUser:\n")
+	fmt.Printf("  Value: %v\n", interfaceWithRealUser)
+	fmt.Printf("  == nil: %v\n", interfaceWithRealUser == nil)
+	fmt.Printf("  Type: %v\n", reflect.TypeOf(interfaceWithRealUser))
+	fmt.Printf("  ValueOf IsNil: %v\n", reflect.ValueOf(interfaceWithRealUser).IsNil())
+}
+```
+
+This will output something like:
+
+```go
+swapnilnair@Swapnil-Nairs-MacBook-Pro sandbox % go run main.go 
+=== Analyzing Interface Contents ===
+nilInterface:
+  Value: <nil>
+  == nil: true
+  Type: <nil>
+  ValueOf IsValid: false
+
+interfaceWithNilUser:
+  Value: <nil>
+  == nil: false // Notice this false, that's the key. 
+  Type: *main.User
+  ValueOf IsNil: true
+
+interfaceWithRealUser:
+  Value: &{Swapnil}
+  == nil: false
+  Type: *main.User
+  ValueOf IsNil: false
+```
+
+Notice how `interfaceWithNilUser` has a type (`*main.User`) even though its value is nil. Understanding this is key to
+avoiding panics and bugs that leave you baffled.
+
+## Why Go Works This Way: The Design Philosophy
+
+This behaviour might seem counterintuitive, but it's actually a powerful feature of Go's type system. Here's why:
+
+### 1. Type Safety and Method Dispatch
+
+Even when the underlying value is nil, Go still knows what type the interface contains. This enables:
+
+```go
+func processUser(u UserIFace) {
+	if u == nil {
+		fmt.Println("No user interface provided")
+		return
+	}
+	
+	// We can still call methods on nil receivers if they're designed for it!
+	// This is only possible because Go knows the type
+	if reflect.ValueOf(u).IsNil() {
+		fmt.Println("User value is nil, but we know it's a *User")
+		// Could call methods that handle nil receivers
+	} else {
+		fmt.Printf("User name: %s\n", u.GetName())
+	}
+}
+```
+
+### 2. Distinguishing Between "No Type" and "Typed Nil"
+
+This distinction is crucial in many scenarios:
+
+```go
+func getUserFromCache(id string) UserIFace {
+	if id == "" {
+		return nil // No user interface at all
+	}
+	
+	user := lookupInCache(id)
+	if user == nil {
+		return (*User)(nil) // We know it should be a User, but it's nil
+	}
+	
+	return user
+}
+
+func handleCacheResult(u UserIFace) {
+	if u == nil {
+		fmt.Println("Invalid request - no user type expected")
+	} else if reflect.ValueOf(u).IsNil() {
+		fmt.Println("Valid request - user not found in cache")
+	} else {
+		fmt.Printf("Found user: %s\n", u.GetName())
+	}
+}
+```
+
+## Real-World Problems: Where This Gotcha Strikes
+
+### The Factory Pattern Trap
+
+This interface behaviour causes significant issues in factory patterns, which is what yours truly uses a lot of, and the
+entire reason I wrote this blog. 
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type UserIFace interface {
+	GetName() string
+}
+
+type AdminIFace interface {
+	GetPermissions() []string
+}
+
+type User struct {
+	Name string
+}
+
+func (u *User) GetName() string {
+	if u == nil {
+		return "Unknown User"
+	}
+	return u.Name
+}
+
+type Admin struct {
+	Name        string
+	Permissions []string
+}
+
+func (a *Admin) GetName() string {
+	if a == nil {
+		return "Unknown Admin"  
+	}
+	return a.Name
+}
+
+func (a *Admin) GetPermissions() []string {
+	if a == nil {
+		return []string{}
+	}
+	return a.Permissions
+}
+
+// Problematic factory function
+func CreateUserByRole(role string) UserIFace {
+	switch role {
+	case "admin":
+		var admin *Admin = nil // Simulating admin not found
+		return admin           // Returns interface containing (*Admin)(nil)
+	case "user":
+		var user *User = nil   // Simulating user not found  
+		return user            // Returns interface containing (*User)(nil)
+	default:
+		return nil            // Returns really nil interface
+	}
+}
+
+func main() {
+	fmt.Println("=== Factory Pattern Demonstration ===")
+	
+	roles := []string{"admin", "user", "guest"}
+	
+	for _, role := range roles {
+		userInterface := CreateUserByRole(role)
+		
+		fmt.Printf("\nRole: %s\n", role)
+		fmt.Printf("userInterface == nil: %v\n", userInterface == nil)
+		
+		if userInterface != nil {
+			fmt.Printf("Type: %v\n", reflect.TypeOf(userInterface))
+			fmt.Printf("Value is nil: %v\n", reflect.ValueOf(userInterface).IsNil())
+			
+			// This will work even with nil values due to nil-safe methods! 
+            // cool sidenote, this is also why you can call methods on nil receivers if they're designed for it,
+            // protobuf uses this to great effect in the generated code for getters and setters.
+			fmt.Printf("GetName(): %s\n", userInterface.GetName())
+		}
+	}
+	
+	// The real problem: downstream code expects nil checks to work
+	fmt.Println("\n=== The Problem ===")
+	adminUser := CreateUserByRole("admin")
+	
+	// Programmer expects this to work:
+	if adminUser == nil {
+		fmt.Println("No admin user - using default permissions")
+	} else {
+		fmt.Println("Admin user found - loading admin dashboard")
+		// This code will execute even though admin is actually nil!
+		// could cause runtime panics if methods aren't nil-safe
+	}
+}
+```
+
+This factory pattern creates a dangerous situation where:
+
+1. `CreateUserByRole("admin")` returns a non-nil interface containing a nil `*Admin`.
+2. The nil check `adminUser == nil` fails unexpectedly.
+3. Downstream code assumes it has a valid admin user.
+4. Runtime panics occur when non-nil-safe methods are called.
+
+The output looks like this: 
+```
+swapnilnair@Swapnil-Nairs-MacBook-Pro sandbox % go run main.go
+=== Factory Pattern Demonstration ===
+
+Role: admin
+userInterface == nil: false
+Type: *main.Admin
+Value is nil: true
+GetName(): Unknown Admin
+
+Role: user
+userInterface == nil: false
+Type: *main.User
+Value is nil: true
+GetName(): Unknown User
+
+Role: guest
+userInterface == nil: true
+
+=== The Problem ===
+Admin user found - doing admin things muhahahaha !! 
+```
+
+### The Error Interface Pattern
+
+The same issue affects error handling:
+
+```go
+type CustomError struct {
+	Message string
+	Code    int
+}
+
+func (e *CustomError) Error() string {
+	if e == nil {
+		return "unknown error"
+	}
+	return fmt.Sprintf("Error %d: %s", e.Code, e.Message)
+}
+
+func doSomething() error {
+	var err *CustomError = nil
+	
+	// Some logic that might set err
+	if someCondition {
+		return err // Returns interface containing (*CustomError)(nil)
+	}
+	
+	return nil // Returns truly nil interface
+}
+
+func main() {
+	if err := doSomething(); err != nil {
+		fmt.Printf("Error occurred: %v\n", err) // This will always execute!
+	}
+}
+```
+
+## Solutions and Best Practices
+
+### Solution 1: Explicit Nil Handling in Factory Functions
+
+```go
+func CreateUserByRole(role string) UserIFace {
+	switch role {
+	case "admin":
+		admin := getAdminFromDB() // Returns *Admin or nil
+		if admin == nil {
+			return nil // Return truly nil interface
+		}
+		return admin
+	case "user":
+		user := getUserFromDB() // Returns *User or nil  
+		if user == nil {
+			return nil // Return truly nil interface
+		}
+		return user
+	default:
+		return nil
+	}
+}
+```
+
+### Solution 2: Design Nil-Safe Methods
+
+```go
+func (u *User) GetName() string {
+	if u == nil {
+		return "Guest User" // Graceful handling of nil receiver
+	}
+	return u.Name
+}
+
+func (u *User) IsValid() bool {
+	return u != nil && u.Name != ""
+}
+```
+
+### Solution 4: Use Type Assertions with Careful Checks
+
+```go
+func ProcessUser(userInterface UserIFace) {
+	if userInterface == nil {
+		fmt.Println("No user interface provided")
+		return
+	}
+	
+	// Type assert and check for nil
+	if user, ok := userInterface.(*User); ok {
+		if user == nil {
+			fmt.Println("User interface contains nil *User")
+			return
+		}
+		fmt.Printf("Processing user: %s\n", user.Name)
+	} else if admin, ok := userInterface.(*Admin); ok {
+		if admin == nil {
+			fmt.Println("User interface contains nil *Admin")
+			return  
+		}
+		fmt.Printf("Processing admin: %s\n", admin.Name)
+	}
+}
+```
+
+## Advanced: Understanding Interface Internals
+
+For the truly curious (hmu; I'm always happy to talk to fellow adventurers), here's how interfaces work at the assembly level. Go interfaces are implemented as a structure similar to:
+
+```go
+type iface struct {
+	tab  *itab
+	data unsafe.Pointer
+}
+
+type itab struct {
+	inter *interfacetype
+	_type *_type
+	// method table follows
+}
+```
+
+When you assign `(*User)(nil)` to a `UserIFace`:
+
+1. Go creates an `itab` containing method information for `*User`.
+2. The `data` field points to nil.
+3. The interface is non-nil because `tab` is not nil.
+
+This is why `interface{} == nil` checks the entire structure, not just the data field.
+
+I plan on writing a blog on the internals of interfaces and how they work in Go, along with weird performance implications.
+So if you're interested in that, please let me know. Until then, you can check out this [blog.](https://research.swtch.com/interfaces)
+
+
+
+## The conclusion to all of these shenanigans
+
+The key insights to remember:
+
+1. **Go interfaces are two-part structures**: type information + value
+2. **An interface is nil only when both parts are nil**
+3. **Assigning a nil concrete value creates a non-nil interface with nil data**
+4. **This behaviour enables powerful type safety and method dispatch**
+5. **Factory patterns must explicitly handle nil returns**
+6. **Always design nil-safe methods when working with interfaces**
+
+This isn't a bug or a design flaw - it's a sophisticated feature that makes Go's type system more powerful and expressive. Once you understand it, you'll write more robust code and debug interface-related issues with confidence.
+
+The next time you see unexpected behaviour with nil interfaces, you'll know exactly what's happening under the hood (or at least you will after reading this blog and won't spend hours wondering if you're going insane).
+
+<br/>
+<br/>
+- - -
+
+
+If you liked this blog, please let me know, and I'll write more blogs like this. If you didn't like it, please let me know that too, and I'll try to make the next one better. 
+
+Always remember, the only way to learn is by doing, and the only way to do is by making mistakes. Or as [The Go Blog](https://go.dev/reasons%20you%20shouldn%27t%20follow%20swapnil) so aptly puts it:
+
+
+```
+ to, err := human()
+```
+
+Thank you for reading!
+

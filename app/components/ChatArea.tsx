@@ -95,9 +95,9 @@ export default function ChatArea({
               <h1 className={`text-3xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 Hi! I'm Swapnil Nair.
               </h1>
-              <p className={`text-lg mb-8 max-w-md ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
-                Engineer, Quizzer and evidently a Comedian <div className=""></div> Try one of these questions:
-              </p>
+              <div className={`text-lg mb-8 max-w-md ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+                Engineer, Quizzer and evidently a Comedian <div></div>Try one of these questions:
+              </div>
               <SuggestedQuestions
                 questions={suggestedQuestions}
                 onQuestionClick={handleSuggestedQuestion}
