@@ -9,15 +9,15 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Swapnil | Software Engineer',
+    default: 'Swapnil Nair | Software Engineer',
     template: '%s | Swapnil',
   },
-  description: 'Software engineer passionate about building innovative web applications.',
+  description: 'Multidisciplinary software engineer who can believes in building fast and breaking things.',
   openGraph: {
     title: 'Swapnil | Software Engineer',
-    description: 'Software engineer passionate about building innovative web applications.',
+    description: 'Multidisciplinary software engineer who can believes in building fast and breaking things.',
     url: baseUrl,
-    siteName: 'Swapnil Portfolio',
+    siteName: 'ClosedAI',
     locale: 'en_US',
     type: 'website',
   },
