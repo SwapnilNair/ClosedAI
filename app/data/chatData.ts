@@ -38,7 +38,7 @@ export const qaPairs: QAPair[] = [
   },
   {
     question: "What is Swapnil working on?",
-    answer: "Aurva, this site, my own LLM form scratch, Data security in general, databases,",
+    answer: "**Right now at Aurva:** Architecting AIOStack - our newest product for AI observability in Kubernetes. Think non-intrusive discovery for all AI workloads in the cloud. I'm handling everything from backend to Helm deployments, CI/CD pipelines, and airgapped validation systems. The goal? Make it the defacto standard after any AI install in k8s. No pressure.\n\n**Side quests:** Built this ChatGPT-looking website because regular portfolios are for cowards. Also plotting to build an LLM from scratch someday - Andrej Karpathy and Claude Code got me hooked and now I need to understand how these things actually work under the hood.\n\n**General obsessions:** Anything tech, software or hardware (it's not work if you love it), databases and their protocols, and figuring out how to break and secure cloud infrastructure. I recently read about the Shadow Brokers and I'm both awed and terrified, and want to learn more. Mossad if you're reading this, can I get a beginner's crash course from you guys.",
     keywords: ["working", "projects", "current", "now", "doing"]
   },
   {
@@ -68,7 +68,7 @@ export const qaPairs: QAPair[] = [
   },
   {
     question: "What are Swapnil's interests?",
-    answer: "tech, design, art, advertising, business, stats, chemistry, history",
+    answer: "where do I start? I'm basically a curiosity vending machine. Tech and engineering (obviously - it's literally my job). Reading voraciously - 16 books this year on business case studies, autobiographies, and mythology-inspired fiction. Quizzing competitively because apparently knowing random facts is a sport. I'm fascinated by design, advertising, business strategy, and statistics (yes, I'm fun at parties). I also have a weird soft spot for chemistry and history - the kind of subjects that make you go 'wait, THAT'S how that happened?!' I want to learn get a HAM radio license, and build an LLM from scratch because Andrej Karpathy is an aweosome teacher. I also get myself into the weirdest of scenarios, so that gives me a plethora of tales to enchant you. My friends call me a generalist, I call it having commitment issues with hobbies.",
     keywords: ["interests", "hobbies", "like", "enjoy", "passion", "love"]
   },
   {
@@ -124,7 +124,7 @@ export const suggestedQuestions = [
   "Tell me about Swapnil's background",
   "How can I contact Swapnil?",
   "What is Swapnil working on?",
-  // "What are Swapnil's best projects?",
+  "What are Swapnil's best projects?",
   "What technologies does Swapnil use?",
 ];
 
