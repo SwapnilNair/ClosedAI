@@ -175,7 +175,7 @@ export default function ChatArea({
             </div>
           </form>
           <div className={`text-center text-xs mt-3 ${isDark ? 'text-white/30' : 'text-gray-400'}`}>
-            Dear Sam Altman, please don't sue me.
+            Dear Sam Altman, please don't sue me. I'm working on improving the semantics
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <body className="antialiased">
+      <body >
         {children}
         <Analytics />
         <SpeedInsights />

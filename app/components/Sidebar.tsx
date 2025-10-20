@@ -84,8 +84,8 @@ export default function Sidebar({
           <button
             onClick={onNewChat}
             className={`w-full flex items-center gap-2 py-2.5 rounded-lg transition-all duration-300 group ${isDark
-                ? 'text-white/90 hover:bg-white/10'
-                : 'text-gray-700 hover:bg-gray-100'
+              ? 'text-white/90 hover:bg-white/10'
+              : 'text-gray-700 hover:bg-gray-100'
               } ${isCollapsed
                 ? 'justify-center px-2'
                 : 'px-3'
@@ -116,8 +116,8 @@ export default function Sidebar({
           <a
             href="/blog"
             className={`w-full flex items-center gap-2 py-2.5 rounded-lg transition-all duration-300 group cursor-pointer ${isDark
-                ? 'text-white/90 hover:bg-white/10'
-                : 'text-gray-700 hover:bg-gray-100'
+              ? 'text-white/90 hover:bg-white/10'
+              : 'text-gray-700 hover:bg-gray-100'
               } ${isCollapsed
                 ? 'justify-center px-2'
                 : 'px-3'
@@ -188,6 +188,41 @@ export default function Sidebar({
               )}
             </button>
           ))}
+        </div>
+
+        {/* All Questions Link */}
+        <div className="px-1 pb-2">
+          <button
+            onClick={() => {
+              onConversationSelect('all-questions');
+              onClose();
+            }}
+            className={`
+              w-full text-left py-2.5 px-3 rounded-lg transition-all duration-300 cursor-pointer flex items-center gap-2
+              ${activeConversationId === 'all-questions'
+                ? isDark ? 'bg-white/10' : 'bg-gray-100'
+                : isDark ? 'hover:bg-white/5' : 'hover:bg-gray-50'
+              }
+              ${isCollapsed ? 'lg:justify-center lg:px-2' : ''}
+            `}
+            title={isCollapsed ? 'All Questions' : ''}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4 flex-shrink-0"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {!isCollapsed && (
+              <span className={`text-xs font-medium ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                All Questions
+              </span>
+            )}
+          </button>
         </div>
 
         {/* Footer with Theme Toggle */}

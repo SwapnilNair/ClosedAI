@@ -71,6 +71,21 @@ function ChatApp() {
   };
 
   const handleConversationSelect = (id: string) => {
+    if (id === 'all-questions') {
+      // Show all available questions
+      setActiveConversationId('all-questions');
+      const allQuestionsMessage: Message = {
+        id: 'all-questions-list',
+        role: 'assistant',
+        content: generateAllQuestionsContent(),
+        timestamp: new Date()
+      };
+      setMessages([allQuestionsMessage]);
+      setIsTyping(false);
+      setStreamingMessageId(null);
+      return;
+    }
+
     const conversation = conversations.find(c => c.id === id);
     if (conversation) {
       setActiveConversationId(id);
@@ -78,6 +93,31 @@ function ChatApp() {
       setIsTyping(false);
       setStreamingMessageId(null);
     }
+  };
+
+  const generateAllQuestionsContent = () => {
+    let content = "Here are all the questions this can answer. It can already fuzzy match your questions, building a better semantic matching algorithm for this soon :) :\n\n";
+
+    // Group questions by category for better organization
+    const categories = [
+      { name: "About Me", questions: ["Who are you. What is this?", "Tell me about Swapnil's background", "What makes Swapnil stand out?"] },
+      { name: "Work & Experience", questions: ["What do you do", "Tell me about Aurva", "What is Swapnil's experience?", "Have you worked with customers?", "What's AIOStack?"] },
+      { name: "Projects & Tech", questions: ["What is Swapnil working on?", "What are Swapnil's best projects?", "What technologies does Swapnil use?"] },
+      { name: "Personal Interests", questions: ["What are Swapnil's interests?", "What are your interests outside of tech?", "Tell me about your quizzing background", "Tell me something fun about you"] },
+      { name: "Other", questions: ["What is Swapnil's education?", "Does Swapnil do freelance work?", "How can I contact Swapnil?", "What's your approach to problem-solving?"] }
+    ];
+
+    categories.forEach(category => {
+      content += `**${category.name}:**\n`;
+      const categoryQuestions = qaPairs.filter(qa => category.questions.includes(qa.question));
+      categoryQuestions.forEach(qa => {
+        content += `• ${qa.question}\n`;
+      });
+      content += "\n";
+    });
+
+    content += "💡 **Tip:** Just type or click any question to get started!";
+    return content;
   };
 
   const handleNewChat = () => {

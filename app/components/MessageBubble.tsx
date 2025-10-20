@@ -2,6 +2,7 @@
 
 import { Message } from '../data/chatData';
 import { useTheme } from '../context/ThemeContext';
+import MarkdownRenderer from './MarkdownRenderer';
 
 interface MessageBubbleProps {
   message: Message;
@@ -31,12 +32,10 @@ export default function MessageBubble({ message, isStreaming }: MessageBubblePro
             }
           `}
         >
-          <div className="text-[15px] leading-relaxed whitespace-pre-wrap break-words">
-            {message.content}
-            {isStreaming && (
-              <span className={`inline-block w-1.5 h-4 ml-0.5 animate-pulse ${isDark ? 'bg-white/70' : 'bg-gray-700'}`}></span>
-            )}
-          </div>
+          <MarkdownRenderer content={message.content} isUser={isUser} />
+          {isStreaming && (
+            <span className={`inline-block w-1.5 h-4 ml-0.5 animate-pulse ${isDark ? 'bg-white/70' : 'bg-gray-700'}`}></span>
+          )}
         </div>
       </div>
 

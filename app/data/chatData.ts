@@ -22,18 +22,28 @@ export interface QAPair {
 // Predefined Q&A pairs
 export const qaPairs: QAPair[] = [
   {
-    question: "Who are you and What is this?",
-    answer: "This is a personal shenanigan",
-    keywords: ["who", "what", "site", "website"]
+    question: "Who are you. What is this?",
+    answer: "Hey! I'm Swapnil Nair, a 23 year old engineer from Bangalore working at Aurva Inc. I build data security products, love quizzing and debates, and apparently think regular portfolios are boring - hence this ChatGPT - inspired site. ( That should also tell you that I consider myself a fantastic comedian ) I'm a problem solver who moves fast, breaks things (occasionally), and fixes them even faster. Ask me anything!",
+    keywords: ["who", "site", "website"]
+  },
+  {
+    question: "What do you do",
+    answer: "I'm an engineer at Aurva Inc, a data security company based in California but working out of Bangalore. We power some of India's top fintechs like Razorpay, PayTM, and several banks. I work primarily with Golang, databases, and cloud systems - building products that help secure sensitive data across cloud and on-prem environments. It doesn't really feel like work because I would have done something like this anyway, but now I get paid for it. Incredible isn't it ?",
+    keywords: ["do", "work", "job", "career", "aurva"]
+  },
+  {
+    question: "Tell me about Aurva",
+    answer: "Aurva (aurva.io) is building data security infrastructure for India. We're a California-based company operating out of Bangalore, and we power security for some of India's biggest fintechs and banks. I've been here for two years now - joined a semester early since I finished my credits ahead of schedule. It's been an incredible journey building enterprise security products from scratch! I've been here as their first intern, and it has been grounding to realize how much effort, patience and perseverance goes into building a startup. As an engineer I've always been blinded by just building something that is 'exciting', and not always functional. This place has taught me that solving a problem is much more important than building something shiny.",
+    keywords: ["aurva", "company", "work", "startup"]
   },
   {
     question: "What is Swapnil working on?",
-    answer: "",
+    answer: "Aurva, this site, my own LLM form scratch, Data security in general, databases,",
     keywords: ["working", "projects", "current", "now", "doing"]
   },
   {
     question: "What technologies does Swapnil use?",
-    answer: "",
+    answer: "Primarily Golang, databases and cloud systems (AWS, GCP, Azure). I worked extensively with Kubernetes, Helm charts and CI pipelines of late. I've worked a lot with python, AWK and sed for data processing too. Don't be fooled by just the software, I'm a huge hardware geek and love to assemble PCs too. I've built everything from Finite State Machines for database protocols to distributed systems for security monitoring. I also deal with customer deployments directly, which has taught me a ton about E2E sales ( I have so much to learn there ) and real-world enterprise requirements.",
     keywords: ["tech", "stack", "technologies", "tools", "languages", "framework"]
   },
   {
@@ -43,7 +53,7 @@ export const qaPairs: QAPair[] = [
   },
   {
     question: "What are Swapnil's best projects?",
-    answer: "Here are some of my favorite projects:\n\n**1. ClosedAI Portfolio** - This ChatGPT-inspired personal website you're looking at! Built with Next.js, React, and Tailwind CSS.\n\n**2. Full-Stack E-Commerce Platform** - A scalable online marketplace with payment integration, real-time inventory, and admin dashboard.\n\n**3. AI-Powered Content Generator** - A tool that uses GPT models to help creators generate blog posts, social media content, and more.\n\n**4. Developer Tools Library** - A collection of useful utilities and components for React developers.\n\nEach project taught me valuable lessons about scalability, user experience, and clean code architecture!",
+    answer: "Here are some of my favorite projects:\n\n**At Aurva:**\n• **AIOStack** - Architected a non-intrusive AI discovery and observability platform for Kubernetes. Built the backend, Helm deployments, CI/CD pipelines, and airgapped validation systems.\n• **DSPM Product** - Instrumental in building our Data Security Posture Management product that powers India's top fintechs.\n• **Database Access Monitoring** - Built Finite State Machines from scratch to parse and monitor database protocols for security threats.\n• **Cloud IAM Static Analysis** - Created a vertical for analyzing AWS, GCP, and Azure IAM to detect insider and infiltration threats.\n\n**From College:**\n• **Yggdrasil** - An Apache Kafka and Zookeeper clone built from scratch.\n• **ConFederate** - Federated learning system to analyze data and train models in a distributed system with zero data transfer.\n• **McFlAi** - On-time performance dashboard for airlines using Spark and Kafka.\n• **PageRank Implementation** - Google's PageRank algorithm using the MapReduce model in Python.\n• **HyperShift** - Take photos and videos at events without worrying about device memory.\n• **A.R.E.S** - A Rather Emotionally Supportive System using GPT-3 that you can actually talk to.\n• **SafariFox** - Firefox mod to make it look like Safari from WWDC 2021.\n• **CodeX** - Terminal text editor built with C++ and Python.\n• **PineappleMusic** - Stream music at atrocious quality over UDP sockets. Works only half the time (feature, not a bug).",
     keywords: ["projects", "best", "portfolio", "work", "built", "created"]
   },
   {
@@ -53,12 +63,12 @@ export const qaPairs: QAPair[] = [
   },
   {
     question: "What is Swapnil's experience?",
-    answer: "",
-    keywords: ["experience", "work", "career", "professional", "job", "history"]
+    answer: `**Professional Journey:**\n• **Aurva Inc** (2 years) - Started as an engineer, got promoted twice  (honestly still figuring out what my designation is - I call myself the Chief Intern Officer since I deal with hiring and interns).Now I'm architecting products like AIOStack, handling customer deployments, and building security infrastructure for India's top fintechs and banks. The growth has been wild.\n• **Fidelity Investments** (2 months, SRE Team) - Built a compliance tool for images and deployments that cut time and effort by ~80%. Loved it there, the people were fantastic, but I had to get out of my comfort zone and try something new.\n\n**The Growth Trajectory:** Two years, two promotions, and I've gone from writing code to architecting entire products. Built database protocolparsers with FSMs, cloud-native AI observability platforms, and dealt with actual production systems at banks. The pace has been absolutely insane - in the best way possible.\n\n**Beyond Work:**\n• Former Head of Quiz Club Committee(QQC)\n• Member of Karnataka Quiz Association  \n• Dabbled in debating\n• Want to learn Morse code and get a HAM radio license (found a place in Bangalore!)\n• Always learning - currently obsessed with building an LLM from scratch`,
+    keywords: ["experience", "work", "career", "professional", "job", "history", "promoted", "growth", "fidelity"]
   },
   {
     question: "What are Swapnil's interests?",
-    answer: "Beyond coding, I'm passionate about:\n\n• **Tech Trends**: Following AI developments, web3, and emerging technologies\n• **Open Source**: Contributing to projects and helping the developer community\n• **Writing**: Sharing technical articles and tutorials\n• **Learning**: Always exploring new frameworks, languages, and paradigms\n• **Problem Solving**: Competitive programming and algorithmic challenges\n• **Design**: Creating beautiful, user-friendly interfaces\n\nI believe in continuous learning and staying curious!",
+    answer: "tech, design, art, advertising, business, stats, chemistry, history",
     keywords: ["interests", "hobbies", "like", "enjoy", "passion", "love"]
   },
   {
@@ -73,9 +83,39 @@ export const qaPairs: QAPair[] = [
   },
   {
     question: "What makes Swapnil stand out?",
-    answer: "What sets me apart:\n\n**1. Full-Stack Versatility** - Comfortable across the entire stack, from UI/UX to database optimization.\n\n**2. Product Mindset** - I don't just write code; I think about user experience, business goals, and long-term maintainability.\n\n**3. Fast Learner** - I can quickly adapt to new technologies and codebases.\n\n**4. Clear Communication** - I believe great software requires great teamwork and documentation.\n\n**5. Attention to Detail** - I care about code quality, performance, and edge cases.\n\nI'm not just looking to build features—I want to build the *right* features, the *right* way.",
+    answer: "human, not just an engineer, jack of all trades, opens my worldview to be interdisciplinary, always open to questioning everything",
     keywords: ["stand out", "unique", "different", "special", "why", "strengths"]
-  }
+  },
+  {
+    question: "Have you worked with customers?",
+    answer: "Yes! I deal with customers directly quite frequently. It's given me invaluable insight into how E2E sales and deployments actually work - not just the theory, but the messy reality of enterprise requirements, compliance needs, and production constraints. I've personally worked on cloud and on-prem deployments at a medium-sized bank, which taught me more about real-world systems ( and honestly how slow and rigid they can be )than any textbook could.",
+    keywords: ["customers", "sales", "deployments", "client", "enterprise"]
+  },
+  {
+    question: "What are your interests outside of tech?",
+    answer: "I'm an avid reader - knocked out 16 books this year, mostly business case studies, autobiographies, and mythology-inspired novellas. I'm still active in the quizzing circuit (former head of QQC, member of Karnataka Quiz Association). I want to learn Morse code and get a HAM radio license someday - actually found a place in Bangalore that does it! Oh, and I'm fascinated by LLMs and want to build one from scratch because I believe that is what the future will be built around",
+    keywords: ["interests", "hobbies", "reading", "books", "ham", "quiz"]
+  },
+  {
+    question: "Tell me about your quizzing background",
+    answer: "Quizzing has been instrumental in shaping how I think! I was the former head of QQC (The Quotient Quiz Club). The lateral thinking and pattern recognition skills from quizzing directly translate to how I approach engineering problems - connecting dots that seem unrelated, thinking creatively under pressure, and rapid problem-solving. It's basically cross-training for the brain across seemingly random subjects",
+    keywords: ["quiz", "quizzing", "qqc", "karnataka", "association"]
+  },
+  {
+    question: "Tell me something fun about you",
+    answer: "I want to learn Morse code and get a HAM radio license - found a place in Bangalore that does training! I'm also determined to build an LLM from scratch someday because I'm crazy like that. Oh, and I built this entire website to look like ChatGPT because regular portfolios are boring. I have an interest in chemistry, history and random trivia but also art and advertising oddly enough. I'm in awe of how some campaigns quite literally change the fate of companies and the lasting impact it has on society.  I move fast, break things, and occasionally call myself a comedian (my friends would debate that claim).",
+    keywords: ["fun", "interesting", "funny", "cool", "hobby"]
+  },
+  {
+    question: "What's your approach to problem-solving?",
+    answer: "I tackle problems by moving fast and iterating quickly. My quizzing background taught me to think laterally and connect seemingly unrelated concepts. I don't wait for perfect solutions - I build, test, learn, and iterate. Sometimes ( this is an understatement ) I underestimate complexity (working on that!), but it means I'm never afraid to tackle ambitious projects. I build at unprecedente pace, but I still need to work on taking stuff across the finish line cause I can get bored really quick.",
+    keywords: ["approach", "solve", "problem", "method", "philosophy"]
+  },
+  {
+    question: "What's AIOStack?",
+    answer: "AIOStack is our newest product - a non-intrusive discovery and observability tool for all AI workloads in the cloud. The goal is to make it the defacto standard after any AI installation in Kubernetes. I architected the platform (with a lot of guidance from my lead architect Akash), handled backend development, Helm deployments, CI/CD pipelines, airgapped product validation keys, and long-term log stores. It's ambitious, left me stumped for a while and really put to test how I handle teams but that's how I like my projects! Go check it out at https://aurva.ai , it's free !",
+    keywords: ["aiostack", "ai", "kubernetes", "observability", "newest"]
+  },
 ];
 
 // Suggested questions

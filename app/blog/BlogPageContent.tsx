@@ -80,7 +80,8 @@ export default function BlogPageContent({ posts }: BlogPageContentProps) {
               The Blog
             </h1>
             <p className={`text-lg mb-12 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
-              Some of my thoughts, ideas, and stories
+              Some of my thoughts, ideas, and stories.
+              In a world of AI generated content, I want this to be my space to express myself without filters and processing.
             </p>
 
             <div className="space-y-6">
