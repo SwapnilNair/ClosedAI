@@ -48,22 +48,10 @@
       "namedRegex": "^/blog(?:/)?$"
     },
     {
-      "page": "/og",
-      "regex": "^/og(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/og(?:/)?$"
-    },
-    {
       "page": "/robots.txt",
       "regex": "^/robots\\.txt(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/robots\\.txt(?:/)?$"
-    },
-    {
-      "page": "/rss",
-      "regex": "^/rss(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/rss(?:/)?$"
     },
     {
       "page": "/sitemap.xml",
