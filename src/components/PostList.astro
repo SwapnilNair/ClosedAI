@@ -1,0 +1,93 @@
+---
+interface Post {
+  id: string;
+  data: {
+    title: string;
+    date: Date;
+    tag: string;
+  };
+}
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+
+function formatDate(d: Date) {
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' });
+}
+---
+
+<div class="post-list">
+  {posts.map((post, i) => (
+    <a
+      href={`/blog/${post.id}`}
+      class={`post-row${i === posts.length - 1 ? ' last' : ''}`}
+    >
+      <span class="date">{formatDate(post.data.date)}</span>
+
+      <span class="title">{post.data.title}</span>
+      <span class="tag">{post.data.tag}</span>
+    </a>
+  ))}
+</div>
+
+<style>
+  .post-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 110px;
+    align-items: center;
+    padding: 18px 0;
+    border-top: var(--border-faint);
+    gap: 16px;
+  }
+
+  .post-row.last {
+    border-bottom: var(--border-faint);
+  }
+
+  .date {
+    font-size: 12px;
+    color: var(--color-ink-faint);
+    white-space: nowrap;
+  }
+
+  .title {
+    font-size: var(--font-size-base);
+    color: var(--color-ink-muted);
+  }
+
+  .post-row:hover .title {
+    color: var(--color-accent);
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(196, 94, 26, 0.65);
+    text-align: right;
+  }
+
+  @media (max-width: 640px) {
+    .post-row {
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+    }
+
+    .date {
+      display: none;
+    }
+
+    .tag {
+      text-align: right;
+      align-self: center;
+    }
+  }
+</style>

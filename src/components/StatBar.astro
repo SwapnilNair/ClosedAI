@@ -1,0 +1,73 @@
+---
+const stats = [
+  { value: '2+', label: 'Years in Data and AI Security' },
+  { value: '12', label: 'Projects Shipped' },
+  { value: '5', label: 'Papers & Writeups' },
+];
+---
+
+<div class="stat-bar">
+  {stats.map((stat, i) => (
+    <div class={`stat-cell${i === stats.length - 1 ? ' last' : ''}`}>
+      <span class="value">{stat.value}</span>
+      <span class="label">{stat.label}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .stat-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: var(--border);
+  }
+
+  .stat-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 28px var(--space-page);
+    border-right: var(--border);
+  }
+
+  .stat-cell.last {
+    border-right: none;
+  }
+
+  .value {
+    font-size: var(--font-size-xl);
+    font-weight: 500;
+    color: var(--color-ink);
+    line-height: 1;
+  }
+
+  .label {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  @media (max-width: 640px) {
+    .stat-bar {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-cell {
+      border-right: none;
+      border-bottom: var(--border-faint);
+      padding: 20px var(--space-page);
+      flex-direction: row;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .stat-cell.last {
+      border-bottom: none;
+    }
+
+    .value {
+      font-size: var(--font-size-xl);
+    }
+  }
+</style>

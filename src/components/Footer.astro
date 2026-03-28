@@ -1,0 +1,45 @@
+---
+const socials = [
+  { href: 'https://github.com/swapnilnair', label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/swapnilnair1/', label: 'LinkedIn' },
+  { href: 'https://www.instagram.com/swapnilnair1', label: 'Insta' },
+];
+---
+
+<footer>
+  <span class="name">closedai.in by Swapnil Nair</span>
+  <ul>
+    {socials.map(s => (
+      <li><a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a></li>
+    ))}
+  </ul>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px var(--space-page);
+    border-top: var(--border);
+    margin-top: auto;
+  }
+
+  .name {
+    font-size: var(--font-size-xs);
+    color: var(--color-ink-faint);
+    letter-spacing: 0.1em;
+  }
+
+  ul {
+    display: flex;
+    gap: 28px;
+  }
+
+  ul a {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+</style>

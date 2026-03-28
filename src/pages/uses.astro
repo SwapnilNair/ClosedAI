@@ -1,0 +1,168 @@
+---
+import Base from '../layouts/Base.astro';
+
+const sections = [
+  {
+    num: '01',
+    title: 'Hardware',
+    items: [
+      { name: 'M2 MacBook Pro 13" ', desc: 'Primary machine. Quiet, fast, stays cool under long builds.' },
+      { name: 'Dell XPS 13"', desc: 'Secondary machine. Use it when I have to deal with eBPF and amd64 specific builds.' },
+      { name: 'LG 24" 2K Monitor (shared)', desc: 'Single external display. Anything more feels like context-switching overhead.' },
+      { name: 'Airpods 4', desc: 'Light weight, don\'t clog up my ears and great sound quality.' },
+      { name: 'No external keyboard', desc: 'Cannot deal with the clickety-clacking' },
+      { name: 'No external mouse', desc: 'Never got used to an external mouse since my Thinkpad days (loved the red nubbin)' },
+    ],
+  },
+  {
+    num: '02',
+    title: 'Editor & Terminal',
+    items: [
+      { name: 'Cursor (without Pro)', desc: 'Primary editor. Just liked the Cursor Dark theme' },
+      { name: 'iTerm2', desc: 'Terminal. Fast, minimal, sensible defaults.' },
+      { name: 'k9s + kubectx', desc: 'Session management. One terminal, infinite kubernetes clusters.' },
+      { name: 'TablePlus', desc: 'Actually amazing when you have to deal with a lot of databases like me.' },
+    ],
+  },
+  {
+    num: '03',
+    title: 'Stack',
+    items: [
+      { name: 'Go', desc: 'Primary language for work, anything that needs to be fast and deployed.' },
+      { name: 'Python', desc: 'Tertiary language for data work, ML pipelines, and security tooling.' },
+      { name: 'TypeScript', desc: 'Frontend when it\'s unavoidable. Type safety or nothing.' },
+      { name: 'Docker + Compose', desc: 'Local dev environments. Kubernetes when it needs to scale.' },
+    ],
+  },
+  {
+    num: '04',
+    title: 'Services',
+    items: [
+      { name: 'Linear', desc: 'Project and issue tracking. Keyboard-first, fast.' },
+      { name: 'Notion', desc: 'Long-form notes and documentation. Slowly migrating to Obsidian.' },
+      { name: 'Obsidian', desc: 'Second brain. Local-first, markdown, linked thinking.' },
+      { name: '1Password', desc: 'Secrets management for humans. Mandatory.' },
+      { name: 'Cloudflare', desc: 'DNS, CDN, and anything that touches the edge.' },
+    ],
+  },
+];
+---
+
+<Base title="Uses — closedai.in" description="The hardware, software, and services I use day to day.">
+
+  <section class="page-hero">
+    <p class="eyebrow">Tooling</p>
+    <h1>Uses<span class="period">.</span></h1>
+    <p class="sub">
+      The hardware, software, and services I use day to day.
+      <br/>
+      Note : I do not get paid by any of these.
+    </p>
+  </section>
+
+  {sections.map(section => (
+    <section class="uses-section">
+      <div class="section-header">
+        <span class="section-num">{section.num}</span>
+        <span class="section-title">{section.title}</span>
+      </div>
+      <ul class="items">
+        {section.items.map(item => (
+          <li class="item">
+            <span class="item-name">{item.name}</span>
+            <span class="item-desc">{item.desc}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+</Base>
+
+<style>
+  .page-hero {
+    padding: 64px var(--space-page) 56px;
+    border-bottom: var(--border);
+  }
+
+  .eyebrow {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: var(--font-size-hero);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.0;
+    margin-bottom: 16px;
+  }
+
+  .period {
+    color: var(--color-accent);
+  }
+
+  .sub {
+    font-size: var(--font-size-base);
+    color: var(--color-ink-muted);
+    max-width: 480px;
+  }
+
+  .uses-section {
+    padding: var(--space-section) var(--space-page);
+    border-bottom: var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .section-num {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.16em;
+    color: var(--color-accent);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    padding: 16px 0;
+    border-top: var(--border-faint);
+    align-items: baseline;
+  }
+
+  .item:last-child {
+    border-bottom: var(--border-faint);
+  }
+
+  .item-name {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .item-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+</style>

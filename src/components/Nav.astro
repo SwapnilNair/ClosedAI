@@ -1,0 +1,66 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+  { href: '/work', label: 'Work' },
+  { href: '/blog', label: 'Writing' },
+  { href: '/uses', label: 'Uses' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<nav>
+  <a href="/" class="logo">closedai.in</a>
+  <ul>
+    {links.map(link => (
+      <li>
+        <a
+          href={link.href}
+          class={pathname === link.href || pathname.startsWith(link.href + '/') ? 'active' : ''}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px var(--space-page);
+    border-bottom: var(--border);
+  }
+
+  .logo {
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  ul a {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  ul a.active {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    ul {
+      gap: 18px;
+    }
+  }
+</style>

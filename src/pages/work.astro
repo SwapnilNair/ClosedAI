@@ -1,0 +1,143 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const allWork = await getCollection('work');
+---
+
+<Base title="Work — closedai.in" description="Selected projects in AI security and data infrastructure.">
+
+
+
+  <!-- Header -->
+  <section class="page-hero">
+    <p class="eyebrow">Things I've Done</p>
+    <h1>Selected Work<span class="period">.</span></h1>
+    <p class="sub">
+      Projects at the intersection of AI systems and security.
+      Some shipped, some ongoing, some still in research.
+    </p>
+  </section>
+
+  <!-- Now strip -->
+  <section class="now-strip">
+    <span class="now-label">Now</span>
+    <p class="now-text">
+      Building production-grade prompt injection detection for high-throughput LLM APIs.
+      Thinking about how token burn will be a major cause of concern for SOC teams down the line.
+    </p>
+  </section>
+  
+  <!-- Work grid -->
+  <section class="work-section">
+    <div class="work-grid">
+      {allWork.map(item => (
+        <div class="work-card">
+          <span class="work-status">{item.data.status}</span>
+          <h3 class="work-title">{item.data.title}</h3>
+          <p class="work-desc">{item.data.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+
+</Base>
+
+<style>
+  .now-strip {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    padding: 48px var(--space-page);
+    border-bottom: var(--border);
+    align-items: center;
+    background: var(--color-surface);
+  }
+
+  .now-label {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  .now-text {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    color: var(--color-ink);
+  }
+
+  .page-hero {
+    padding: 64px var(--space-page) 56px;
+    border-bottom: var(--border);
+  }
+
+  .eyebrow {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: var(--font-size-hero);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.0;
+    margin-bottom: 16px;
+  }
+
+  .period {
+    color: var(--color-accent);
+  }
+
+  .sub {
+    font-size: var(--font-size-base);
+    color: var(--color-ink-muted);
+    max-width: 480px;
+  }
+
+  .work-section {
+    padding: var(--space-section) var(--space-page);
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--color-border);
+  }
+
+  .work-card {
+    background: var(--color-bg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .work-card:hover {
+    background: var(--color-hover);
+  }
+
+  .work-status {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .work-title {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .work-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+</style>

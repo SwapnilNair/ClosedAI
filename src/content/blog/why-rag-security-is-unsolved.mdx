@@ -1,0 +1,26 @@
+---
+title: "Why RAG Security Is Still Unsolved"
+date: 2025-07-22
+tag: "Research"
+description: "Retrieval-augmented generation moved AI systems from static to dynamic. The security model didn't keep up."
+---
+
+Retrieval-augmented generation moved AI systems from static to dynamic. The security model didn't keep up.
+
+## The problem with dynamic context
+
+A fine-tuned model has a fixed attack surface. You can characterise it, red-team it, deploy it. RAG systems retrieve context at inference time, which means the attack surface changes with every request. A document that was safe last week might have been updated. The retrieval corpus grows. Documents expire without being removed.
+
+The model doesn't know any of this. It trusts what it retrieves.
+
+## Three failure modes we see repeatedly
+
+**Corpus poisoning**: Injecting documents into the retrieval index that will be retrieved in response to predictable queries. Unlike training data poisoning, this can be done post-deployment. The attack is surgical — you only need to affect specific retrieval patterns.
+
+**Context overflow attacks**: Retrieving so much context that the model's attention to the actual user query degrades. This is less about injection and more about degrading the quality of reasoning in ways that are hard to monitor.
+
+**Privilege escalation via retrieval**: Systems that retrieve documents from different access tiers and combine them in context. A low-privilege query retrieves a document that happens to contain high-privilege information. The model synthesises across tiers. No individual access control was violated; the combination was.
+
+## What good looks like
+
+The honest answer is that nobody has fully solved this. The teams doing the best work are treating retrieved context as untrusted user input, running separate inference passes for context validation, and maintaining tight control over corpus ingestion. It's expensive and it slows things down. It's also the right call.

@@ -1,0 +1,28 @@
+---
+title: "A Practical Threat Model for Model Weight Exfiltration"
+date: 2025-03-18
+tag: "Security"
+description: "Model weights are increasingly valuable. The threat of exfiltration is real and undermodelled. Here's how I'd think about defending against it."
+---
+
+Model weights are increasingly valuable. The attack surface for exfiltration is real and consistently undermodelled.
+
+## Why this matters now
+
+A few years ago, model weights were a research asset. Now they're a competitive moat. A fine-tuned model that took months and significant compute to produce represents both IP and security risk if exfiltrated. The threat actors have evolved accordingly.
+
+## The threat model
+
+Exfiltration paths roughly cluster into three categories:
+
+**API-based extraction**: Querying a deployed model extensively to reconstruct its behaviour. Full weight recovery is generally infeasible; behaviour reconstruction for specific domains is not. Rate limiting and query monitoring slow this down but don't stop a patient adversary.
+
+**Infrastructure compromise**: Getting access to model storage, training infrastructure, or serving clusters. This is a standard cloud security problem, but the consequence of a breach is disproportionate compared to a typical data breach.
+
+**Supply chain attacks**: Compromising the tooling used to build, evaluate, or deploy models. MLflow, Weights & Biases, experiment tracking systems — these are high-value targets that are often less well-secured than production infrastructure.
+
+## What actually moves the needle
+
+Mandatory access controls on model artefacts with full audit logging. Short-lived credentials for any process that touches weights. Treating model artefacts the same as production secrets, not as build artefacts. Canary queries that trigger alerts if someone is systematically probing the model.
+
+The fundamentals are not glamorous. They work.

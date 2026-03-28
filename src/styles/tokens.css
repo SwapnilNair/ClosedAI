@@ -1,0 +1,42 @@
+:root {
+  /* Palette */
+  --color-bg: #faf8f4;
+  --color-surface: #ede9e0;
+  --color-hover: #f3efe6;
+  --color-ink: #1a1814;
+  --color-ink-muted: rgba(26, 24, 20, 0.829);
+  --color-ink-faint: rgba(15, 14, 12, 0.468);
+  --color-accent: #c45e1a;
+  --color-border: rgba(26, 24, 20, 0.1);
+  --color-border-faint: rgba(26, 24, 20, 0.07);
+
+  /* Typography */
+  --font-sans: 'DM Sans', sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-md: 17px;
+  --font-size-lg: 20px;
+  --font-size-xl: 30px;
+  --font-size-hero: clamp(38px, 6vw, 58px);
+
+  /* Spacing */
+  --space-page: 48px;
+  --space-section: 56px;
+
+  /* Layout */
+  --max-width: 1140px;
+
+  /* Misc */
+  --border: 0.5px solid var(--color-border);
+  --border-faint: 0.5px solid var(--color-border-faint);
+  --radius: 0px;
+  /* sharp edges everywhere — change here if ever softening */
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-page: 20px;
+    --space-section: 40px;
+  }
+}
