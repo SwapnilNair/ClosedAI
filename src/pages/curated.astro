@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import IndexHeader from '../components/IndexHeader.astro';
+import entries from '../data/curated.json';
+const linkCount = entries.reduce((count, entry) => count + entry.links.length, 0);
+const domain = (url: string) => new URL(url).hostname.replace(/^www\./, '');
+---
+<Base title="Curated — Swapnil Nair" description="Articles, papers, tools, and other corners of the web worth keeping. A personal collection by Swapnil Nair.">
+  <IndexHeader title="Curated" description="Things I’ve read, used, or found worth keeping. Mostly systems, software, and AI, with detours into design, business, and everything else." />
+  <section class="library" aria-label="Curated links">
+    <form class="library-tools" role="search" hidden>
+      <div class="search-field">
+        <label for="library-search">Search the collection</label>
+        <input id="library-search" type="search" placeholder="Try Go, databases, or a website…" autocomplete="off" aria-controls="curated-list" />
+      </div>
+      <div class="sort-field">
+        <label for="library-sort">Order</label>
+        <select id="library-sort"><option value="saved">As collected</option><option value="title">Title, A–Z</option></select>
+      </div>
+      <button type="reset">Clear</button>
+    </form>
+    <div class="collection-meta">
+      <p id="result-count" role="status" aria-live="polite">{entries.length} entries · {linkCount} links</p>
+      <span>Collected over time</span>
+    </div>
+    <ul id="curated-list">
+      {entries.map((entry, index) => (
+        <li class="entry" data-order={index} data-title={entry.title} data-search={`${entry.title} ${entry.links.map((link) => `${link.label} ${link.url}`).join(' ')}`} data-links={entry.links.length}>
+          <div class="entry-main">
+            <h2><a href={entry.links[0].url} target="_blank" rel="noopener noreferrer">{entry.title}<span class="external" aria-hidden="true"> ↗</span></a></h2>
+            {entry.links.length > 1 && <ul class="related-links" aria-label={`Links for ${entry.title}`}>
+              {entry.links.map((link) => <li><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} <span aria-hidden="true">↗</span></a></li>)}
+            </ul>}
+          </div>
+          <span class="source">{domain(entry.links[0].url)}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="empty" hidden>No matches. Try a different title, topic, or website.</p>
+  </section>
+  <script>
+    import { matchesCuratedSearch } from '../utils/curated';
+    const form = document.querySelector<HTMLFormElement>('.library-tools');
+    const search = document.querySelector<HTMLInputElement>('#library-search');
+    const sort = document.querySelector<HTMLSelectElement>('#library-sort');
+    const list = document.querySelector<HTMLUListElement>('#curated-list');
+    const count = document.querySelector<HTMLElement>('#result-count');
+    const empty = document.querySelector<HTMLElement>('.empty');
+    if (form && search && sort && list && count && empty) {
+      const rows = Array.from(list.querySelectorAll<HTMLLIElement>('.entry'));
+      const update = () => {
+        let visible = 0;
+        let links = 0;
+        for (const row of rows) {
+          row.hidden = !matchesCuratedSearch(row.dataset.search ?? '', search.value);
+          if (!row.hidden) { visible++; links += Number(row.dataset.links); }
+        }
+        count.textContent = `${visible} ${visible === 1 ? 'entry' : 'entries'} · ${links} ${links === 1 ? 'link' : 'links'}`;
+        empty.hidden = visible > 0;
+      };
+      const reorder = () => {
+        const ordered = [...rows].sort((a, b) => sort.value === 'title'
+          ? (a.dataset.title ?? '').localeCompare(b.dataset.title ?? '', 'en', { sensitivity: 'base', numeric: true })
+          : Number(a.dataset.order) - Number(b.dataset.order));
+        list.append(...ordered);
+      };
+      form.hidden = false;
+      search.addEventListener('input', update);
+      sort.addEventListener('change', reorder);
+      form.addEventListener('submit', (event) => event.preventDefault());
+      form.addEventListener('reset', () => {
+        search.value = '';
+        sort.value = 'saved';
+        reorder();
+        update();
+        search.focus();
+      });
+      update();
+    }
+  </script>
+</Base>
+<style>
+  .library { padding: 32px var(--space-page) var(--space-section); }
+  .library-tools { display: flex; align-items: end; gap: 16px; padding-bottom: 28px; }
+  .library-tools[hidden], .entry[hidden], .empty[hidden] { display: none; }
+  .search-field { flex: 1; max-width: 560px; }
+  .search-field, .sort-field { display: grid; gap: 8px; }
+  label { display: block; margin: 0; font-size: 13px; color: var(--color-ink-muted); }
+  input, select, button { display: block; height: 44px; min-height: 44px; line-height: normal; border: var(--border); border-radius: 0; padding: 10px 13px; background: var(--color-bg); color: var(--color-ink); font: inherit; font-size: 14px; }
+  input { width: 100%; }
+  input::placeholder { color: var(--color-ink-faint); }
+  select {
+    color-scheme: dark;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 38px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%23a5a7a3' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+  }
+  button { cursor: pointer; }
+  button:hover { background: var(--color-hover); }
+  .collection-meta { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 18px; color: var(--color-ink-faint); font-size: 13px; }
+  #curated-list, .related-links { list-style: none; }
+  .entry { display: grid; grid-template-columns: minmax(0, 1fr) 210px; align-items: baseline; gap: 32px; padding: 24px 0; border-top: var(--border-faint); }
+  h2 { font-size: 20px; font-weight: 400; line-height: 1.4; letter-spacing: -.01em; text-wrap: pretty; }
+  a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .external { color: var(--color-ink-faint); font-size: 15px; white-space: nowrap; }
+  .source { text-align: right; color: var(--color-ink-faint); font-size: 13px; overflow-wrap: anywhere; }
+  .related-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; font-size: 13px; color: var(--color-ink-muted); }
+  .related-links li { max-width: 100%; overflow-wrap: anywhere; }
+  .empty { padding: 40px 0; border-top: var(--border-faint); color: var(--color-ink-muted); }
+  @media (max-width: 700px) {
+    .library { padding-top: 24px; }
+    .library-tools { flex-wrap: wrap; gap: 12px; }
+    .search-field { flex: 1 0 100%; max-width: none; }
+    .sort-field { flex: 1; }
+    select { width: 100%; }
+    .entry { grid-template-columns: 1fr; gap: 8px; padding-block: 20px; }
+    h2 { font-size: 18px; }
+    .source { text-align: left; }
+    .collection-meta > span { display: none; }
+  }
+  @media screen and (min-width: 1001px) {
+    .entry { padding-block: 21px; }
+    h2 { font-size: 18px; }
+  }
+</style>

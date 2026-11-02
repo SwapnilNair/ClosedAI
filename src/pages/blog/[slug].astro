@@ -25,7 +25,7 @@ const structuredData = {
   description: post.data.description,
   datePublished: post.data.publishedAt.toISOString(),
   dateModified: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
-  author: { '@type': 'Person', name: 'Swapnil Nair', url: new URL('/about', Astro.site).href },
+  author: { '@type': 'Person', name: 'Swapnil Nair', url: new URL('/', Astro.site).href },
   mainEntityOfPage: canonical.href,
 };
 ---
@@ -48,7 +48,7 @@ const structuredData = {
       <div class="share-tools">
       <div class="article-meta">
         <img src="/hero.png" alt="" width="48" height="48" />
-        <div><a href="/about">Swapnil Nair</a><p><time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time> · {readingTime(post.body)}</p>
+        <div><a href="/">Swapnil Nair</a><p><time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time> · {readingTime(post.body)}</p>
         {post.data.updatedAt && <p>Updated {formatDate(post.data.updatedAt)}</p>}</div>
       </div>
         <div class="article-actions">

@@ -1,6 +1,6 @@
 ---
 const pathname = Astro.url.pathname;
-const links = [{ href: '/work', label: 'Work' }, { href: '/blog', label: 'Writing' }, { href: '/about', label: 'About' }];
+const links = [{ href: '/work', label: 'Work' }, { href: '/blog', label: 'Writing' }, { href: '/curated', label: 'Curated' }];
 const active = (href: string) => pathname === href || pathname.startsWith(href + '/');
 ---
 <header class="nav-shell">

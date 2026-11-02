@@ -6,7 +6,7 @@ export async function GET({ site }: { site: URL }) {
   const work = await getCollection('work');
   const topics = [...new Set(posts.flatMap((post) => post.data.topics))];
   const paths = [
-    '/', '/about', '/work', '/blog', '/resume', '/uses',
+    '/', '/work', '/blog', '/curated', '/resume', '/uses',
     ...posts.map((post) => `/blog/${post.id}`),
     ...work.map((item) => `/work/${item.data.slug}`),
     ...topics.map((topic) => `/blog/topics/${topic.toLowerCase().replaceAll(' ', '-')}`),

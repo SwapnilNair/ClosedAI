@@ -7,11 +7,17 @@ const posts = publishedPosts(await getCollection('blog')).slice(0, 3);
 ---
 <Base>
   <ProfileHero />
-  <section class="question">
-    <div class="reading-column">
-      <h2>Today’s question</h2>
-      <p class="question-text">The Wright brothers couldn’t find a light enough engine for the 1903 Flyer, so their bicycle-shop mechanic built one in six weeks. Who was he?</p>
-      <details><summary><span class="show">Show answer</span><span class="hide">Hide answer</span></summary><p class="answer"><strong>Charlie Taylor.</strong> He machined a 12 hp, four-cylinder aluminium-block engine with no drawings, mostly from the brothers’ rough sketches. He is often called the first aviation mechanic.</p></details>
+  <section class="about-body">
+    <div class="story">
+      <span class="mono-label">01 · CURRENT WORK</span>
+      <p>I work across DSPM, database activity monitoring, cloud identity, and AI security in enterprise environments. That has meant writing parsers for cloud IAM services, implementing finite-state machines for wire protocols, reasoning about encrypted API traffic, and turning those primitives into products people can operate.</p>
+      <p>The question I keep returning to is what happens when AI agents meet production environments. The attack surface is larger than most teams realise, the tooling is early, and the best answers will require product judgment as much as model research.</p>
+
+      <span class="mono-label section-label">02 · ORIGIN</span>
+      <p>I started with Linux at sixteen and never really stopped. Software, hardware, and mechanical systems all became versions of the same question: what if we understood enough of this to build it ourselves? Engineering is less a job category for me than the default way I approach the world. I owe my grandfather for that.</p>
+
+      <span class="mono-label section-label">03 · OUTSIDE THE TERMINAL</span>
+      <p>I read obsessively, track product launches and markets, host quizzes, argue in debates, and maintain an unreasonable number of opinions about advertising and history. The point is not to collect trivia. It is to keep finding new models for how people and systems behave.</p>
     </div>
   </section>
   <section class="writing">
@@ -24,18 +30,13 @@ const posts = publishedPosts(await getCollection('blog')).slice(0, 3);
   </section>
 </Base>
 <style>
+  .about-body { padding: 88px var(--space-page); border-top: var(--border-faint); }
+  .story { max-width: 720px; margin: 0 auto; }
+  .story p { margin-top: 18px; font-size: 17px; line-height: 1.78; color: #c5c5ca; }
+  .section-label { display: block; margin-top: 58px; padding-top: 18px; border-top: var(--border-faint); }
+
   .reading-column { max-width: 760px; margin: 0 auto; }
-  .question { padding: 88px var(--space-page); border-top: var(--border-faint); border-bottom: var(--border-faint); }
-  .question .reading-column { display: flex; flex-direction: column; gap: 24px; }
-  .question h2 { font-size: 17px; color: var(--color-ink-faint); }
-  .question-text { font-size: 34px; line-height: 1.25; letter-spacing: -.02em; text-wrap: pretty; }
-  summary { display: inline-block; cursor: pointer; list-style: none; font-size: 15px; border: var(--border); padding: 12px 18px; }
-  summary::-webkit-details-marker { display: none; }
-  .hide, details[open] .show { display: none; }
-  details[open] .hide { display: inline; }
-  .answer { padding-top: 18px; font-size: 18px; line-height: 1.6; color: #c8cac6; }
-  .answer strong { color: var(--color-ink); }
-  .writing { padding: 80px var(--space-page) 88px; }
+  .writing { padding: 80px var(--space-page) 88px; border-top: var(--border-faint); }
   .writing-inner { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: baseline; }
   .writing h2 { font-size: 30px; letter-spacing: -.02em; }
   .all-writing { font-size: 15px; color: var(--color-ink-muted); }
@@ -44,12 +45,6 @@ const posts = publishedPosts(await getCollection('blog')).slice(0, 3);
   .post:hover, .all-writing:hover { opacity: .75; }
   .post-meta { font-size: 14px; color: var(--color-ink-faint); white-space: nowrap; }
   @media (max-width: 640px) {
-    .question { padding: 44px 20px; }
-    .question .reading-column { gap: 18px; }
-    .question h2 { font-size: 15px; }
-    .question-text { font-size: 22px; line-height: 1.32; letter-spacing: -.01em; }
-    summary { display: block; text-align: center; padding: 14px 0; }
-    .answer { font-size: 16px; padding-top: 16px; }
     .writing { padding: 44px 20px 32px; }
     .writing-inner { grid-template-columns: 1fr; gap: 14px; }
     .writing h2 { font-size: 24px; }
@@ -59,12 +54,6 @@ const posts = publishedPosts(await getCollection('blog')).slice(0, 3);
   }
 
   @media screen and (min-width: 1001px) {
-    .question { padding-block: 76px; }
-    .question .reading-column { gap: 21px; }
-    .question h2 { font-size: 15px; }
-    .question-text { font-size: 30px; }
-    summary { padding: 10px 16px; font-size: 14px; }
-    .answer { font-size: 16px; padding-top: 16px; }
     .writing { padding-block: 70px 76px; }
     .writing h2 { font-size: 27px; }
     .post { padding-block: 18px; gap: 21px; font-size: 18px; }

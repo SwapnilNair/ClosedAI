@@ -1,0 +1,2044 @@
+[
+  {
+    "title": "H.264 is magic",
+    "links": [
+      {
+        "url": "https://sidbala.com/h-264-is-magic/",
+        "label": "H.264 is magic"
+      }
+    ]
+  },
+  {
+    "title": "Adopting AV1 for real-time communication at Meta",
+    "links": [
+      {
+        "url": "https://engineering.fb.com/2026/06/22/video-engineering/adopting-av1-for-real-time-communication-rtc-meta/",
+        "label": "Adopting AV1 for real-time communication at Meta"
+      }
+    ]
+  },
+  {
+    "title": "Goroutine leak profiles",
+    "links": [
+      {
+        "url": "https://go.dev/blog/goroutine-leak-profiles",
+        "label": "Goroutine leak profiles"
+      }
+    ]
+  },
+  {
+    "title": "Already Clean — Goodfire",
+    "links": [
+      {
+        "url": "https://already-clean.goodfire.com/",
+        "label": "Already Clean — Goodfire"
+      }
+    ]
+  },
+  {
+    "title": "HTTP connection reuse in Go",
+    "links": [
+      {
+        "url": "https://go.dev/blog/http-connection-reuse",
+        "label": "HTTP connection reuse in Go"
+      }
+    ]
+  },
+  {
+    "title": "Prompt caching",
+    "links": [
+      {
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching#pricing",
+        "label": "Prompt caching"
+      }
+    ]
+  },
+  {
+    "title": "AI agent permissions",
+    "links": [
+      {
+        "url": "https://scalex.dev/blog/ai-agent-permissions/",
+        "label": "AI agent permissions"
+      }
+    ]
+  },
+  {
+    "title": "The LLM game",
+    "links": [
+      {
+        "url": "https://llmgame.scalex.dev/",
+        "label": "The LLM game"
+      }
+    ]
+  },
+  {
+    "title": "Superpowers",
+    "links": [
+      {
+        "url": "https://github.com/obra/superpowers",
+        "label": "Superpowers"
+      }
+    ]
+  },
+  {
+    "title": "MiMo-TiLER: 1,000 tokens per second",
+    "links": [
+      {
+        "url": "https://mimo.xiaomi.com/blog/mimo-tilert-1000tps",
+        "label": "MiMo-TiLER: 1,000 tokens per second"
+      }
+    ]
+  },
+  {
+    "title": "privacy-filter.cpp",
+    "links": [
+      {
+        "url": "https://github.com/localai-org/privacy-filter.cpp",
+        "label": "privacy-filter.cpp"
+      }
+    ]
+  },
+  {
+    "title": "Inventing work",
+    "links": [
+      {
+        "url": "https://sujithjay.com/inventing-work",
+        "label": "Inventing work"
+      }
+    ]
+  },
+  {
+    "title": "AI event posters",
+    "links": [
+      {
+        "url": "https://john.hartnup.uk/2026/06/07/ai-event-posters.html",
+        "label": "AI event posters"
+      }
+    ]
+  },
+  {
+    "title": "Poster prompts",
+    "links": [
+      {
+        "url": "https://john.hartnup.uk/poster-prompts/",
+        "label": "Poster prompts"
+      }
+    ]
+  },
+  {
+    "title": "FlashAttention",
+    "links": [
+      {
+        "url": "https://github.com/Dao-AILab/flash-attention",
+        "label": "FlashAttention"
+      }
+    ]
+  },
+  {
+    "title": "Designing positional encoding",
+    "links": [
+      {
+        "url": "https://huggingface.co/blog/designing-positional-encoding",
+        "label": "Designing positional encoding"
+      }
+    ]
+  },
+  {
+    "title": "ModernBERT",
+    "links": [
+      {
+        "url": "https://huggingface.co/blog/modernbert",
+        "label": "ModernBERT"
+      }
+    ]
+  },
+  {
+    "title": "How to build a diffusion language model",
+    "links": [
+      {
+        "url": "https://kuleshov-group.github.io/blog/blog/2026/how-to-build-a-diffusion-language-model/",
+        "label": "How to build a diffusion language model"
+      }
+    ]
+  },
+  {
+    "title": "How Hashicorp scheduled 2,000,000 containers on 6,100 hosts in 10 AWS regions in 22 minutes just for fun",
+    "links": [
+      {
+        "url": "https://www.hashicorp.com/c2m",
+        "label": "C2m"
+      }
+    ]
+  },
+  {
+    "title": "How Zerodha processes, generate, digitally sign, and e-mail out 1.5+ million PDF contract notes in about 25 minutes, incurring only negligible costs on EC2",
+    "links": [
+      {
+        "url": "https://zerodha.tech/blog/1-5-million-pdfs-in-25-minutes/",
+        "label": "1 5 million pdfs in 25 minutes"
+      }
+    ]
+  },
+  {
+    "title": "A great guide on how scaling should be approached",
+    "links": [
+      {
+        "url": "https://zerodha.tech/blog/scaling-with-common-sense/",
+        "label": "Scaling with common sense"
+      }
+    ]
+  },
+  {
+    "title": "Index 1,600,000,000 Keys ( 1.6 billion, yes ) with transducers in Rust and automata",
+    "links": [
+      {
+        "url": "https://blog.burntsushi.net/transducers/",
+        "label": "Transducers"
+      }
+    ]
+  },
+  {
+    "title": "How to keep track of uniqueness when cardinality is in the millions - Redis HyperLogLog",
+    "links": [
+      {
+        "url": "http://antirez.com/news/75",
+        "label": "75"
+      }
+    ]
+  },
+  {
+    "title": "A new approach at stateful key value stores",
+    "links": [
+      {
+        "url": "https://research.google/pubs/fast-key-value-stores-an-idea-whose-time-has-come-and-gone/",
+        "label": "Fast key value stores an idea whose time has come and gone"
+      }
+    ]
+  },
+  {
+    "title": "Facebook’s custom distributed key value store. Who needs Redis anyway",
+    "links": [
+      {
+        "url": "https://engineering.fb.com/2021/08/06/core-infra/zippydb/",
+        "label": "Zippydb"
+      }
+    ]
+  },
+  {
+    "title": "How atomic clocks make computers go brr",
+    "links": [
+      {
+        "url": "https://engineering.fb.com/2022/11/21/production-engineering/precision-time-protocol-at-meta/",
+        "label": "Precision time protocol at meta"
+      }
+    ]
+  },
+  {
+    "title": "Index trillionaire",
+    "links": [
+      {
+        "url": "https://www.uber.com/en-IN/blog/how-ledgerstore-supports-trillions-of-indexes/",
+        "label": "How ledgerstore supports trillions of indexes"
+      }
+    ]
+  },
+  {
+    "title": "Nil-away to keep code safe",
+    "links": [
+      {
+        "url": "https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/",
+        "label": "Nilaway practical nil panic detection for go"
+      }
+    ]
+  },
+  {
+    "title": "PDF_in_Go",
+    "links": [
+      {
+        "url": "https://maroto.io/#/",
+        "label": "Maroto.io"
+      }
+    ]
+  },
+  {
+    "title": "The good kind of RAG-ging",
+    "links": [
+      {
+        "url": "https://huggingface.co/learn/cookbook/en/advanced_rag",
+        "label": "Advanced rag"
+      }
+    ]
+  },
+  {
+    "title": "Verhoeff Algorithm - How to avoid Aadhaar SNAFUs",
+    "links": [
+      {
+        "url": "https://m2pfintech.com/blog/validate-aadhaar-numbers-using-the-verhoeff-algorithm-in-flutter/",
+        "label": "Validate aadhaar numbers using the verhoeff algorithm in flutter"
+      }
+    ]
+  },
+  {
+    "title": "Sort 8 million numbers in 1MB of RAM",
+    "links": [
+      {
+        "url": "https://preshing.com/20121026/1mb-sorting-explained/",
+        "label": "1mb sorting explained"
+      }
+    ]
+  },
+  {
+    "title": "Missing sem",
+    "links": [
+      {
+        "url": "https://missing.csail.mit.edu/",
+        "label": "Missing.csail.mit.edu"
+      }
+    ]
+  },
+  {
+    "title": "Solving the K8s LAN Party",
+    "links": [
+      {
+        "url": "https://arnavtripathy98.medium.com/solving-a-kubernetes-ctf-k8s-lan-party-c773190e9246",
+        "label": "Solving a kubernetes ctf k8s lan party c773190e9246"
+      }
+    ]
+  },
+  {
+    "title": "The startup CTO’s Handbook",
+    "links": [
+      {
+        "url": "https://github.com/ZachGoldberg/Startup-CTO-Handbook/blob/main/StartupCTOHandbook.md#tech-culture-and-general-philosophy",
+        "label": "StartupCTOHandbook.md"
+      }
+    ]
+  },
+  {
+    "title": "The No Hype LLM reading list ( You need attention to read this )",
+    "links": [
+      {
+        "url": "https://gist.github.com/veekaybee/be375ab33085102f9027853128dc5f0e",
+        "label": "Be375ab33085102f9027853128dc5f0e"
+      }
+    ]
+  },
+  {
+    "title": "The Indian Payments Ecosystem ( From UPI to NPCI )",
+    "links": [
+      {
+        "url": "https://mehaksamaiya.notion.site/India-s-Digital-Payment-Ecosystem-e0b1bab9c565414197b8ec46952b3894",
+        "label": "India s Digital Payment Ecosystem e0b1bab9c565414197b8ec46952b3894"
+      }
+    ]
+  },
+  {
+    "title": "Present like Apple",
+    "links": [
+      {
+        "url": "https://medium.com/@pachecoandrea/what-i-learned-as-a-product-designer-at-apple-35341d9ced8a",
+        "label": "What i learned as a product designer at apple 35341d9ced8a"
+      }
+    ]
+  },
+  {
+    "title": "How our perception of status shouldn’t hinder us",
+    "links": [
+      {
+        "url": "https://every.to/no-small-plans/the-status-trap",
+        "label": "The status trap"
+      }
+    ]
+  },
+  {
+    "title": "Content writing for early stage startups",
+    "links": [
+      {
+        "url": "https://posthog.com/founders/dev-marketing-for-startups",
+        "label": "Dev marketing for startups"
+      }
+    ]
+  },
+  {
+    "title": "Reverse Engineering a mysterious UDP stream in a hotel",
+    "links": [
+      {
+        "url": "https://www.gkbrk.com/2016/05/hotel-music/",
+        "label": "Hotel music"
+      }
+    ]
+  },
+  {
+    "title": "Manage like an Engineer",
+    "links": [
+      {
+        "url": "https://ben.balter.com/2023/01/10/manage-like-an-engineer/",
+        "label": "Manage like an engineer"
+      }
+    ]
+  },
+  {
+    "title": "Duality of Sorting",
+    "links": [
+      {
+        "url": "http://lkozma.net/blog/a-dual-view-of-sorting-algorithms/",
+        "label": "A dual view of sorting algorithms"
+      }
+    ]
+  },
+  {
+    "title": "Golang messes up your Wifi",
+    "links": [
+      {
+        "url": "https://withinboredom.info/2022/12/29/golang-is-evil-on-shitty-networks/",
+        "label": "Golang is evil on shitty networks"
+      }
+    ]
+  },
+  {
+    "title": "Optimize memory in Go ( profilers and function tracing )",
+    "links": [
+      {
+        "url": "https://f4t.dev/software/go-performance-memory/",
+        "label": "Go performance memory"
+      }
+    ]
+  },
+  {
+    "title": "One character to make go 42% faster",
+    "links": [
+      {
+        "url": "https://hmarr.com/blog/go-allocation-hunting/",
+        "label": "Go allocation hunting"
+      }
+    ]
+  },
+  {
+    "title": "VectorDBs and Langchain Cookbook",
+    "links": [
+      {
+        "url": "https://www.pinecone.io/learn/#missing-manuals",
+        "label": "Learn"
+      }
+    ]
+  },
+  {
+    "title": "Decision Making",
+    "links": [
+      {
+        "url": "https://anthonybonato.com/2015/03/16/sayres-law-required-wisdom-for-all-academics/",
+        "label": "Sayres law required wisdom for all academics"
+      }
+    ]
+  },
+  {
+    "title": "How to ask questions",
+    "links": [
+      {
+        "url": "https://dontasktoask.com/",
+        "label": "Dontasktoask.com"
+      }
+    ]
+  },
+  {
+    "title": "How to ask questions 2",
+    "links": [
+      {
+        "url": "https://xyproblem.info/",
+        "label": "Xyproblem.info"
+      }
+    ]
+  },
+  {
+    "title": "How to ask questions 3",
+    "links": [
+      {
+        "url": "https://nohello.net/en/",
+        "label": "En"
+      }
+    ]
+  },
+  {
+    "title": "MacOS memory management",
+    "links": [
+      {
+        "url": "https://gist.github.com/kconner/cff08fe3e0bb857ea33b47d965b3e19f",
+        "label": "Cff08fe3e0bb857ea33b47d965b3e19f"
+      }
+    ]
+  },
+  {
+    "title": "eBPF based load balancer on the cloud",
+    "links": [
+      {
+        "url": "https://github.com/loxilb-io/loxilb",
+        "label": "Loxilb"
+      }
+    ]
+  },
+  {
+    "title": "RUM and data access",
+    "links": [
+      {
+        "url": "https://muratbuffalo.blogspot.com/2023/02/designing-access-methods-rum-conjecture.html",
+        "label": "Designing access methods rum conjecture"
+      }
+    ]
+  },
+  {
+    "title": "ScyllaDB, A tree made of logs",
+    "links": [
+      {
+        "url": "https://www.creativcoder.dev/blog/what-is-a-lsm-tree",
+        "label": "What is a lsm tree"
+      }
+    ]
+  },
+  {
+    "title": "0 to $1B , Slack and its legendary strategy",
+    "links": [
+      {
+        "url": "https://review.firstround.com/from-0-to-1b-slacks-founder-shares-their-epic-launch-strategy/",
+        "label": "From 0 to 1b slacks founder shares their epic launch strategy"
+      }
+    ]
+  },
+  {
+    "title": "Architect a recommender system",
+    "links": [
+      {
+        "url": "https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8",
+        "label": "System architectures for personalization and recommendation e081aa94b5d8"
+      }
+    ]
+  },
+  {
+    "title": "It’s Time to Build",
+    "links": [
+      {
+        "url": "https://a16z.com/its-time-to-build/",
+        "label": "Its time to build"
+      }
+    ]
+  },
+  {
+    "title": "Serverless is …. cheaper ?",
+    "links": [
+      {
+        "url": "https://synccomputing.com/5-lessons-learned-from-testing-databricks-sql-serverless-dbt/",
+        "label": "5 lessons learned from testing databricks sql serverless dbt"
+      }
+    ]
+  },
+  {
+    "title": "The art of copying",
+    "links": [
+      {
+        "url": "https://matthewstrom.com/writing/copying/",
+        "label": "Copying"
+      }
+    ]
+  },
+  {
+    "title": "LLM roadmap",
+    "links": [
+      {
+        "url": "https://youssefhosni.gumroad.com/l/qigmtg",
+        "label": "Qigmtg"
+      }
+    ]
+  },
+  {
+    "title": "No strings attached - Building static binaries in Go",
+    "links": [
+      {
+        "url": "https://eli.thegreenplace.net/2024/building-static-binaries-with-go-on-linux/",
+        "label": "Building static binaries with go on linux"
+      }
+    ]
+  },
+  {
+    "title": "Ebb and Flow (aditya)",
+    "links": [
+      {
+        "url": "https://medium.com/engineering-udaan/taming-the-ebb-and-flow-cost-efficient-time-based-autoscaling-efe696c68f9d",
+        "label": "Taming the ebb and flow cost efficient time based autoscaling efe696c68f9d"
+      }
+    ]
+  },
+  {
+    "title": "Apple Notes for websites !?",
+    "links": [
+      {
+        "url": "https://dev.to/julien41/apple-notes-is-my-cms-4lbl",
+        "label": "Apple notes is my cms 4lbl"
+      }
+    ]
+  },
+  {
+    "title": "The Dev Encyclopedia",
+    "links": [
+      {
+        "url": "https://devpedia.pages.dev/",
+        "label": "Devpedia.pages.dev"
+      }
+    ]
+  },
+  {
+    "title": "Amazing Docker",
+    "links": [
+      {
+        "url": "https://overcast.blog/13-docker-tricks-you-didnt-know-47775a4f678f",
+        "label": "13 docker tricks you didnt know 47775a4f678f"
+      }
+    ]
+  },
+  {
+    "title": "Query go brrr.. make a postgres query 1000x faster",
+    "links": [
+      {
+        "url": "https://mattermost.com/blog/making-a-postgres-query-1000-times-faster/",
+        "label": "Making a postgres query 1000 times faster"
+      }
+    ]
+  },
+  {
+    "title": "S4 → Simple Storage Service Simplified",
+    "links": [
+      {
+        "url": "https://highscalability.com/behind-aws-s3s-massive-scale/",
+        "label": "Behind aws s3s massive scale"
+      }
+    ]
+  },
+  {
+    "title": "Let them eat LLMs",
+    "links": [
+      {
+        "url": "https://youtu.be/-mRi-B3t6fA",
+        "label": " mRi B3t6fA"
+      }
+    ]
+  },
+  {
+    "title": "The Absolutely Lit System Design Textbook",
+    "links": [
+      {
+        "url": "https://github.com/karanpratapsingh/system-design",
+        "label": "System design"
+      }
+    ]
+  },
+  {
+    "title": "100 common Go Mistakes ( MUST READ )",
+    "links": [
+      {
+        "url": "https://100go.co/",
+        "label": "100go.co"
+      }
+    ]
+  },
+  {
+    "title": "You build what you are",
+    "links": [
+      {
+        "url": "https://www.atlassian.com/blog/teamwork/what-is-conways-law-acmi",
+        "label": "What is conways law acmi"
+      }
+    ]
+  },
+  {
+    "title": "All things distributed ( Amazing blog )",
+    "links": [
+      {
+        "url": "https://www.allthingsdistributed.com/",
+        "label": "Www.allthingsdistributed.com"
+      }
+    ]
+  },
+  {
+    "title": "One query to view them all",
+    "links": [
+      {
+        "url": "https://app.chartdb.io/diagrams",
+        "label": "ChartDB"
+      },
+      {
+        "url": "https://app.chartdb.io/diagrams/d4vdexd3otah2035xn5j4yd1o",
+        "label": "Example diagram"
+      }
+    ]
+  },
+  {
+    "title": "Explain. Analyze. Visualize.",
+    "links": [
+      {
+        "url": "https://tatiyants.com/pev/#/plans/new",
+        "label": "Query plan visualizer"
+      },
+      {
+        "url": "https://thoughtbot.com/blog/reading-an-explain-analyze-query-plan",
+        "label": "Basic guide"
+      },
+      {
+        "url": "https://thoughtbot.com/blog/advanced-postgres-performance-tips",
+        "label": "Advanced guide"
+      }
+    ]
+  },
+  {
+    "title": "Why I shouldn’t rewrite everything in Rust",
+    "links": [
+      {
+        "url": "https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/",
+        "label": "Things you should never do part i"
+      }
+    ]
+  },
+  {
+    "title": "Resiliency in distributed Storage Systems : Erasure Coding",
+    "links": [
+      {
+        "url": "https://transactional.blog/blog/2024-erasure-coding",
+        "label": "2024 erasure coding"
+      }
+    ]
+  },
+  {
+    "title": "Go down the rabbit hole",
+    "links": [
+      {
+        "url": "https://rabbitholes.wiki/",
+        "label": "Rabbitholes.wiki"
+      }
+    ]
+  },
+  {
+    "title": "Noisy,Busy, eBees",
+    "links": [
+      {
+        "url": "https://news.ycombinator.com/item?id=41513860",
+        "label": "Item"
+      }
+    ]
+  },
+  {
+    "title": "Awesome Web Design",
+    "links": [
+      {
+        "url": "https://www.sanity.io/",
+        "label": "Sanity"
+      },
+      {
+        "url": "https://linear.app/homepage",
+        "label": "Linear"
+      },
+      {
+        "url": "https://temporal.io/",
+        "label": "Temporal"
+      },
+      {
+        "url": "https://www.palantir.com/",
+        "label": "Palantir"
+      },
+      {
+        "url": "https://www.creative-tim.com/product/muse-vue-ant-design-dashboard",
+        "label": "Muse dashboard"
+      }
+    ]
+  },
+  {
+    "title": "Super tiny VectorDB",
+    "links": [
+      {
+        "url": "https://github.com/D-Star-AI/minDB",
+        "label": "MinDB"
+      }
+    ]
+  },
+  {
+    "title": "AWS on my laptop?",
+    "links": [
+      {
+        "url": "https://www.localstack.cloud/",
+        "label": "Www.localstack.cloud"
+      }
+    ]
+  },
+  {
+    "title": "Classic Read - The Monty Hall problem ( Veridical Paradox )",
+    "links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Monty_Hall_problem",
+        "label": "Monty Hall problem"
+      }
+    ]
+  },
+  {
+    "title": "David vs Goliath - Going against Uber with $3000",
+    "links": [
+      {
+        "url": "https://podcasts.apple.com/ca/podcast/he-launched-an-uber-competitor-with-just-%243-000-grew/id1602872827?i=1000671270425",
+        "label": "Id1602872827"
+      }
+    ]
+  },
+  {
+    "title": "David vs Goliath - 1 man vs Chess.com",
+    "links": [
+      {
+        "url": "https://docs.google.com/spreadsheets/u/0/d/1Si3PMUJGR9KrpE5lngSkHLJKJkb0ZuI4/preview",
+        "label": "Lichess hosting costs"
+      },
+      {
+        "url": "https://www.chessbase.in/news/interview-with-Lichess-founder-Thibault-Duplessis",
+        "label": "Interview with the founder"
+      },
+      {
+        "url": "https://github.com/lichess-org/fishnet",
+        "label": "Fishnet"
+      }
+    ]
+  },
+  {
+    "title": "Know thy 150?",
+    "links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Dunbar%27s_number",
+        "label": "Dunbar's number"
+      }
+    ]
+  },
+  {
+    "title": "The pitfall of luxury",
+    "links": [
+      {
+        "url": "https://www.marxists.org/reference/archive/diderot/1769/regrets.htm",
+        "label": "Regrets"
+      }
+    ]
+  },
+  {
+    "title": "BASGI, WSGI, WTF",
+    "links": [
+      {
+        "url": "https://samagra.me/wtf/2024/09/27/gateway-interfaces.html",
+        "label": "Gateway interfaces"
+      }
+    ]
+  },
+  {
+    "title": "How reddit moved to gRPC",
+    "links": [
+      {
+        "url": "https://www.reddit.com/r/RedditEng/comments/q5vmf2/reddits_move_to_grpc/",
+        "label": "Part one"
+      },
+      {
+        "url": "https://www.reddit.com/r/RedditEng/comments/rdfbin/reddit_and_grpc_the_second_part/",
+        "label": "Part two"
+      },
+      {
+        "url": "https://www.reddit.com/r/RedditEng/comments/xivl8d/leveling_up_reddits_core_the_transition_from/",
+        "label": "Transitioning Reddit’s core"
+      }
+    ]
+  },
+  {
+    "title": "An Incredibly Fast Website, for a century old company",
+    "links": [
+      {
+        "url": "https://www.mcmaster.com/",
+        "label": "Www.mcmaster.com"
+      }
+    ]
+  },
+  {
+    "title": "Sampling with SQL",
+    "links": [
+      {
+        "url": "https://blog.moertel.com/posts/2024-08-23-sampling-with-sql.html",
+        "label": "2024 08 23 sampling with sql"
+      }
+    ]
+  },
+  {
+    "title": "The Rockstar Pavlo’s Blog ( DB Prof)",
+    "links": [
+      {
+        "url": "https://www.cs.cmu.edu/~pavlo/blog/",
+        "label": "Blog"
+      }
+    ]
+  },
+  {
+    "title": "How origami helps NASA",
+    "links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Miura_fold",
+        "label": "Miura fold"
+      }
+    ]
+  },
+  {
+    "title": "Have you turned it off and on again?",
+    "links": [
+      {
+        "url": "https://www.theregister.com/2020/04/02/boeing_787_power_cycle_51_days_stale_data/",
+        "label": "The 51-day power cycle"
+      },
+      {
+        "url": "https://www.theregister.com/2015/05/01/787_software_bug_can_shut_down_planes_generators/",
+        "label": "The generator software bug"
+      }
+    ]
+  },
+  {
+    "title": "HNSW FAISS",
+    "links": [
+      {
+        "url": "https://www.datastax.com/guides/hierarchical-navigable-small-worlds",
+        "label": "HNSW guide"
+      },
+      {
+        "url": "https://zilliz.com/blog/faiss-vs-hnswlib-choosing-the-right-tool-for-vector-search",
+        "label": "FAISS vs. hnswlib"
+      }
+    ]
+  },
+  {
+    "title": "This bird only needs one nest !",
+    "links": [
+      {
+        "url": "https://thume.ca/2023/01/02/one-machine-twitter/",
+        "label": "One machine twitter"
+      }
+    ]
+  },
+  {
+    "title": "Tax on 5 billion? Zero !",
+    "links": [
+      {
+        "url": "https://www.swanbitcoin.com/investing/peter-thiel-ira/",
+        "label": "Peter thiel ira"
+      }
+    ]
+  },
+  {
+    "title": "Linear Time Median Finding",
+    "links": [
+      {
+        "url": "https://rcoh.me/posts/linear-time-median-finding/",
+        "label": "Linear time median finding"
+      }
+    ]
+  },
+  {
+    "title": "DNS for your…. House ?",
+    "links": [
+      {
+        "url": "https://blog.cloudflare.com/the-weird-and-wonderful-world-of-dns-loc-records/",
+        "label": "The weird and wonderful world of dns loc records"
+      }
+    ]
+  },
+  {
+    "title": "Nobody Cares - A great way to think",
+    "links": [
+      {
+        "url": "https://a16z.com/nobody-cares/",
+        "label": "Nobody cares"
+      }
+    ]
+  },
+  {
+    "title": "Hilarious story on laser safety",
+    "links": [
+      {
+        "url": "https://www.funraniumlabs.com/2024/07/how-i-got-my-laser-eye-injury/",
+        "label": "How i got my laser eye injury"
+      }
+    ]
+  },
+  {
+    "title": "Nerf this man",
+    "links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bret_Taylor",
+        "label": "Bret Taylor"
+      }
+    ]
+  },
+  {
+    "title": "Why Go prefers stack over heaps",
+    "links": [
+      {
+        "url": "https://medium.com/safetycultureengineering/an-overview-of-memory-management-in-go-9a72ec7c76a8",
+        "label": "Memory management in Go"
+      },
+      {
+        "url": "https://medium.com/invalid-memory/golang-cost-of-using-the-heap-e70363469754",
+        "label": "The cost of using the heap"
+      }
+    ]
+  },
+  {
+    "title": "Solve Sudokus with SQL",
+    "links": [
+      {
+        "url": "https://www.sqlite.org/lang_with.html#outlandish_recursive_query_examples",
+        "label": "Lang with"
+      }
+    ]
+  },
+  {
+    "title": "JSON helpers",
+    "links": [
+      {
+        "url": "https://jsontr.ee/",
+        "label": "JSON tree"
+      },
+      {
+        "url": "https://json.pub/",
+        "label": "JSON.pub"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Npm_left-pad_incident",
+        "label": "The left-pad incident"
+      }
+    ]
+  },
+  {
+    "title": "Iota in Go",
+    "links": [
+      {
+        "url": "https://bitfieldconsulting.com/posts/iota",
+        "label": "Iota"
+      }
+    ]
+  },
+  {
+    "title": "Rashomon Effect",
+    "links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Rashomon_effect",
+        "label": "Rashomon effect"
+      }
+    ]
+  },
+  {
+    "title": "WhatsApp web chat lock bypass",
+    "links": [
+      {
+        "url": "https://lcat.dev/post.php?id=3cf8e1b9-e5e3-4a6d-af27-12720c5b2d54",
+        "label": "Post.php"
+      }
+    ]
+  },
+  {
+    "title": "Rainbow Tables",
+    "links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Rainbow_table",
+        "label": "Rainbow table"
+      }
+    ]
+  },
+  {
+    "title": "GPT in C",
+    "links": [
+      {
+        "url": "https://nicholas.carlini.com/writing/2023/chat-gpt-2-in-c.html",
+        "label": "Chat gpt 2 in c"
+      }
+    ]
+  },
+  {
+    "title": "In-discriminate hiring",
+    "links": [
+      {
+        "url": "https://danluu.com/tech-discrimination/",
+        "label": "Tech discrimination"
+      }
+    ]
+  },
+  {
+    "title": "Why making great products doesn’t always work",
+    "links": [
+      {
+        "url": "https://danluu.com/nothing-works/",
+        "label": "Nothing works"
+      }
+    ]
+  },
+  {
+    "title": "GUI for Vector Databases",
+    "links": [
+      {
+        "url": "https://github.com/Z-Gort/Reservoirs-Lab",
+        "label": "Reservoirs Lab"
+      }
+    ]
+  },
+  {
+    "title": "Elastic-Yikes !",
+    "links": [
+      {
+        "url": "https://github.com/toshi-search/Toshi",
+        "label": "Toshi"
+      },
+      {
+        "url": "https://github.com/valeriansaliou/sonic",
+        "label": "Sonic"
+      }
+    ]
+  },
+  {
+    "title": "NAT traversals",
+    "links": [
+      {
+        "url": "https://tailscale.com/blog/how-nat-traversal-works",
+        "label": "How nat traversal works"
+      }
+    ]
+  },
+  {
+    "title": "Loom-ing confusion",
+    "links": [
+      {
+        "url": "https://vinay.sh/i-am-rich-and-have-no-idea-what-to-do-with-my-life/",
+        "label": "I am rich and have no idea what to do"
+      }
+    ]
+  },
+  {
+    "title": "SSTs",
+    "links": [
+      {
+        "url": "https://curiouscoding.nl/posts/static-search-tree/",
+        "label": "Static search tree"
+      }
+    ]
+  },
+  {
+    "title": "Pavlo’s Year in Review",
+    "links": [
+      {
+        "url": "https://www.cs.cmu.edu/~pavlo/blog/2025/01/2024-databases-retrospective.html",
+        "label": "Databases in 2024: A Year in Review"
+      }
+    ]
+  },
+  {
+    "title": "SQLite Trivia",
+    "links": [
+      {
+        "url": "https://avi.im/blag/2024/sqlite-facts/",
+        "label": "Sqlite facts"
+      }
+    ]
+  },
+  {
+    "title": "Bloom filters for ranges",
+    "links": [
+      {
+        "url": "https://db.cs.cmu.edu/papers/2019/20_srf-zhang.pdf",
+        "label": "20 srf zhang.pdf"
+      }
+    ]
+  },
+  {
+    "title": "Spooky salary raises",
+    "links": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Halloween_Problem",
+        "label": "Halloween Problem"
+      }
+    ]
+  },
+  {
+    "title": "Doom on PDF",
+    "links": [
+      {
+        "url": "https://doompdf.pages.dev/doom.pdf",
+        "label": "Doom.pdf"
+      }
+    ]
+  },
+  {
+    "title": "ChatGPT isn’t bad for the environment",
+    "links": [
+      {
+        "url": "https://andymasley.substack.com/p/individual-ai-use-is-not-bad-for",
+        "label": "Using ChatGPT is not bad for the environment"
+      }
+    ]
+  },
+  {
+    "title": "When Aurva goes on-prem (hint hint)",
+    "links": [
+      {
+        "url": "https://blog.railway.com/p/data-center-build-part-one",
+        "label": "Building a data center"
+      },
+      {
+        "url": "https://blog.cloudflare.com/an-introduction-to-three-phase-power-and-pdus/",
+        "label": "Three-phase power and PDUs"
+      }
+    ]
+  },
+  {
+    "title": "Redact PIIs from PSQL",
+    "links": [
+      {
+        "url": "https://postgresql-anonymizer.readthedocs.io/en/stable/",
+        "label": "Stable"
+      }
+    ]
+  },
+  {
+    "title": "Timing the passwords",
+    "links": [
+      {
+        "url": "https://ostro.ws/post-timing-attacks",
+        "label": "Post timing attacks"
+      }
+    ]
+  },
+  {
+    "title": "Weird slices of Go",
+    "links": [
+      {
+        "url": "https://stackoverflow.com/questions/16248241/concatenate-two-slices-in-go/58726780#58726780",
+        "label": "58726780"
+      }
+    ]
+  },
+  {
+    "title": "Ohh wow with OAuth",
+    "links": [
+      {
+        "url": "https://www.romaglushko.com/blog/whats-aouth2/",
+        "label": "Whats aouth2"
+      }
+    ]
+  },
+  {
+    "title": "Sarojini Nagar Kafka, bahut sasta milega",
+    "links": [
+      {
+        "url": "https://streamnative.io/blog/how-we-run-a-5-gb-s-kafka-workload-for-just-50-per-hour",
+        "label": "How we run a 5 gb s kafka workload for just 50 per hour"
+      }
+    ]
+  },
+  {
+    "title": "AI BS machines? A pessimistic view of AI",
+    "links": [
+      {
+        "url": "https://thebullshitmachines.com/",
+        "label": "Thebullshitmachines.com"
+      }
+    ]
+  },
+  {
+    "title": "The Awesome Golang repo",
+    "links": [
+      {
+        "url": "https://github.com/avelino/awesome-go",
+        "label": "Awesome go"
+      }
+    ]
+  },
+  {
+    "title": "Beat Frugal Stupidity, sometimes you’re worth it",
+    "links": [
+      {
+        "url": "https://selix.net/notes/dont-be-frupid",
+        "label": "Dont be frupid"
+      }
+    ]
+  },
+  {
+    "title": "How Interfaces work in GO ( also why you cant cast a []string to interface )",
+    "links": [
+      {
+        "url": "https://research.swtch.com/interfaces",
+        "label": "Interfaces"
+      }
+    ]
+  },
+  {
+    "title": "Hyperscale at Meta",
+    "links": [
+      {
+        "url": "https://cacm.acm.org/research/metas-hyperscale-infrastructure-overview-and-insights/",
+        "label": "Metas hyperscale infrastructure overview and insights"
+      }
+    ]
+  },
+  {
+    "title": "The dreaded question - When can you get this done ?",
+    "links": [
+      {
+        "url": "https://www.cosive.com/blog/my-washing-machine-refreshed-my-thinking-on-software-effort-estimation",
+        "label": "My washing machine refreshed my thinking on software effort estimation"
+      }
+    ]
+  },
+  {
+    "title": "#define CTO",
+    "links": [
+      {
+        "url": "https://calv.info/founder-cto",
+        "label": "The founder CTO"
+      },
+      {
+        "url": "https://blog.gregbrockman.com/figuring-out-the-cto-role-at-stripe",
+        "label": "The CTO role at Stripe"
+      }
+    ]
+  },
+  {
+    "title": "Ship early, ship fast.",
+    "links": [
+      {
+        "url": "https://ben.balter.com/2016/09/13/seven-habits-of-highly-effective-githubbers/#2-ship-early-ship-often",
+        "label": "Seven habits of highly effective githubbers"
+      }
+    ]
+  },
+  {
+    "title": "The everything DB for real time MMOs",
+    "links": [
+      {
+        "url": "https://spacetimedb.com/",
+        "label": "Spacetimedb.com"
+      }
+    ]
+  },
+  {
+    "title": "One page to rule them all",
+    "links": [
+      {
+        "url": "https://github.com/keepworking/nash",
+        "label": "Nash"
+      }
+    ]
+  },
+  {
+    "title": "Sync local, Think global",
+    "links": [
+      {
+        "url": "https://news.ycombinator.com/item?id=43358914",
+        "label": "Item"
+      }
+    ]
+  },
+  {
+    "title": "Simple NextJS docs",
+    "links": [
+      {
+        "url": "https://vercel.com/templates/next.js/documents-simple-next-js-documentation",
+        "label": "Documents simple next js documentation"
+      }
+    ]
+  },
+  {
+    "title": "Teaching a machine to think",
+    "links": [
+      {
+        "url": "https://www.anthropic.com/research/tracing-thoughts-language-model",
+        "label": "Tracing thoughts language model"
+      }
+    ]
+  },
+  {
+    "title": "jq : make json life easy",
+    "links": [
+      {
+        "url": "https://jqlang.github.io/jq/",
+        "label": "jq"
+      },
+      {
+        "url": "https://jqplay.org/",
+        "label": "jq playground"
+      }
+    ]
+  },
+  {
+    "title": "JWT - Just Warn Them",
+    "links": [
+      {
+        "url": "https://redis.io/blog/json-web-tokens-jwt-are-dangerous-for-user-sessions/",
+        "label": "Json web tokens jwt are dangerous for user sessions"
+      }
+    ]
+  },
+  {
+    "title": "Goooooooo faster",
+    "links": [
+      {
+        "url": "https://goperf.dev/",
+        "label": "Goperf.dev"
+      }
+    ]
+  },
+  {
+    "title": "Hyper fast SCRAM rundown",
+    "links": [
+      {
+        "url": "https://csb.stevekerrison.com/post/2022-05-scram-detail/",
+        "label": "2022 05 scram detail"
+      }
+    ]
+  },
+  {
+    "title": "SELECT crypto FROM postgres WHERE public=true;",
+    "links": [
+      {
+        "url": "https://www.wiz.io/blog/postgresql-cryptomining",
+        "label": "Postgresql cryptomining"
+      }
+    ]
+  },
+  {
+    "title": "What in the world is a DynamoDB GUI",
+    "links": [
+      {
+        "url": "https://dynomate.io/",
+        "label": "Show HN: Dynomate– Fast, Git-Friendly DynamoDB GUI Client (Dynobase Alternative)"
+      }
+    ]
+  },
+  {
+    "title": "Docker Ko",
+    "links": [
+      {
+        "url": "https://ko.build/",
+        "label": "Ko.build"
+      }
+    ]
+  },
+  {
+    "title": "LLM reading list (again)",
+    "links": [
+      {
+        "url": "https://github.com/elicit/machine-learning-list",
+        "label": "Machine learning list"
+      }
+    ]
+  },
+  {
+    "title": "One day one time, long long ago, learn how OTPs work",
+    "links": [
+      {
+        "url": "https://blog.dogac.dev/how-do-one-time-passwords-work/",
+        "label": "How do one time passwords work"
+      }
+    ]
+  },
+  {
+    "title": "Anatomy of an SQLite File",
+    "links": [
+      {
+        "url": "https://sqlite-internal.pages.dev/",
+        "label": "Sqlite internal.pages.dev"
+      }
+    ]
+  },
+  {
+    "title": "DFS is dead, long live 3FS.",
+    "links": [
+      {
+        "url": "https://maknee.github.io/blog/2025/3FS-Performance-Journal-1/",
+        "label": "3FS Performance Journal 1"
+      },
+      {
+        "url": "https://github.com/deepseek-ai/3FS",
+        "label": "3FS"
+      }
+    ]
+  },
+  {
+    "title": "Bye Bye GC…making your own memory pool in Go",
+    "links": [
+      {
+        "url": "https://mcyoung.xyz/2025/04/21/go-arenas/",
+        "label": "Go arenas"
+      }
+    ]
+  },
+  {
+    "title": "Who needs pip? Python on physical hardware",
+    "links": [
+      {
+        "url": "https://www.runpyxl.com/gpio",
+        "label": "Gpio"
+      }
+    ]
+  },
+  {
+    "title": "MCP thoughts",
+    "links": [
+      {
+        "url": "https://www.ondr.sh/blog/ai-web",
+        "label": "Ai web"
+      }
+    ]
+  },
+  {
+    "title": "Whats in a name ? An entire company’s future…",
+    "links": [
+      {
+        "url": "https://economictimes.indiatimes.com/industry/cons-products/liquor/a-name-change-takes-the-fizz-out-of-biras-earnings/articleshow/118308497.cms",
+        "label": "118308497.cms"
+      }
+    ]
+  },
+  {
+    "title": "Tiny projects, big impact",
+    "links": [
+      {
+        "url": "https://bernsteinbear.com/blog/pl-writing/",
+        "label": "Pl writing"
+      }
+    ]
+  },
+  {
+    "title": "Interface internals",
+    "links": [
+      {
+        "url": "https://tul.github.io/2018/07/23/go-interfaces-deep-dive.html",
+        "label": "Go interfaces deep dive"
+      },
+      {
+        "url": "https://github.com/orisano/gosax",
+        "label": "gosax"
+      },
+      {
+        "url": "https://cmc.gitbook.io/go-internals/chapter-i-go-assembly",
+        "label": "Go assembly"
+      }
+    ]
+  },
+  {
+    "title": "Hey GPT, Swapnil 👎🏻 Swapnal ✔️",
+    "links": [
+      {
+        "url": "https://news.ycombinator.com/item?id=44039563",
+        "label": "The behavior of LLMs in hiring decisions"
+      }
+    ]
+  },
+  {
+    "title": "Holy Graph",
+    "links": [
+      {
+        "url": "https://research.google/pubs/pregel-a-system-for-large-scale-graph-processing/",
+        "label": "Pregel a system for large scale graph processing"
+      }
+    ]
+  },
+  {
+    "title": "How AWS P-s on bad code",
+    "links": [
+      {
+        "url": "https://cacm.acm.org/practice/systems-correctness-practices-at-amazon-web-services/",
+        "label": "Systems correctness practices at amazon web services"
+      }
+    ]
+  },
+  {
+    "title": "Go storage servers",
+    "links": [
+      {
+        "url": "https://github.com/gostor/awesome-go-storage",
+        "label": "Awesome go storage"
+      }
+    ]
+  },
+  {
+    "title": "Local K3d",
+    "links": [
+      {
+        "url": "https://k3d.io/stable/",
+        "label": "Stable"
+      }
+    ]
+  },
+  {
+    "title": "Do not assume things about names",
+    "links": [
+      {
+        "url": "https://flightaware.engineering/falsehoods-programmers-believe-about-aviation/",
+        "label": "Aviation"
+      },
+      {
+        "url": "https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/",
+        "label": "Names"
+      }
+    ]
+  },
+  {
+    "title": "An awesome guide to logging with Zap and Zerolog",
+    "links": [
+      {
+        "url": "https://betterstack.com/community/guides/logging/go/zap/",
+        "label": "Zap"
+      },
+      {
+        "url": "https://betterstack.com/community/guides/logging/zerolog/",
+        "label": "Zerolog"
+      }
+    ]
+  },
+  {
+    "title": "Burn. Your. Title",
+    "links": [
+      {
+        "url": "https://notes.eatonphil.com/2025-04-22-burn-your-title.html",
+        "label": "2025 04 22 burn your title"
+      }
+    ]
+  },
+  {
+    "title": "100 petabytes of logs without ES! (quickwit, s3 search)",
+    "links": [
+      {
+        "url": "https://quickwit.io/blog/quickwit-binance-story",
+        "label": "Quickwit binance story"
+      }
+    ]
+  },
+  {
+    "title": "Atkinson’s Dithering - How to create more colors when you only have 2",
+    "links": [
+      {
+        "url": "https://tannerhelland.com/2012/12/28/dithering-eleven-algorithms-source-code.html",
+        "label": "Eleven dithering algorithms"
+      },
+      {
+        "url": "https://surma.dev/things/ditherpunk/",
+        "label": "Ditherpunk"
+      },
+      {
+        "url": "https://gazs.github.io/canvas-atkinson-dither/",
+        "label": "Atkinson dithering demo"
+      }
+    ]
+  },
+  {
+    "title": "Cache in memory",
+    "links": [
+      {
+        "url": "https://pikuma.com/blog/understanding-computer-cache",
+        "label": "Understanding computer cache"
+      }
+    ]
+  },
+  {
+    "title": "Builder vs String",
+    "links": [
+      {
+        "url": "https://brandur.org/fragments/bytes-buffer-vs-strings-builder",
+        "label": "Bytes buffer vs strings builder"
+      }
+    ]
+  },
+  {
+    "title": "SQL Parser",
+    "links": [
+      {
+        "url": "https://marianogappa.github.io/software/2019/06/05/lets-build-a-sql-parser-in-go/",
+        "label": "Lets build a sql parser in go"
+      }
+    ]
+  },
+  {
+    "title": "Prolly Tree",
+    "links": [
+      {
+        "url": "https://www.dolthub.com/blog/2024-03-03-prolly-trees/",
+        "label": "2024 03 03 prolly trees"
+      }
+    ]
+  },
+  {
+    "title": "Truly Cluely Free",
+    "links": [
+      {
+        "url": "https://github.com/Tej-Sharma/horizon-overlay-open-source-cluely/tree/development",
+        "label": "Development"
+      }
+    ]
+  },
+  {
+    "title": "Good papers",
+    "links": [
+      {
+        "url": "https://ordep.dev/posts/my-favorite-papers",
+        "label": "My favorite papers"
+      }
+    ]
+  },
+  {
+    "title": "CalvinAndHobbes ( non tech )",
+    "links": [
+      {
+        "url": "https://calvinandhobbes.webflow.io/",
+        "label": "Calvinandhobbes.webflow.io"
+      }
+    ]
+  },
+  {
+    "title": "Cool websites",
+    "links": [
+      {
+        "url": "https://osmo-logo-quiz.webflow.io/",
+        "label": "Logo quiz"
+      },
+      {
+        "url": "https://thenonovel.webflow.io/",
+        "label": "The No Novel"
+      }
+    ]
+  },
+  {
+    "title": "1 Bit website of old",
+    "links": [
+      {
+        "url": "https://alpha.lisagui.com/",
+        "label": "Alpha.lisagui.com"
+      }
+    ]
+  },
+  {
+    "title": "S3 querier",
+    "links": [
+      {
+        "url": "https://quickwit.io/",
+        "label": "Quickwit.io"
+      }
+    ]
+  },
+  {
+    "title": "Issues with gorm 1.30",
+    "links": [
+      {
+        "url": "https://github.com/golang/go/issues/73581",
+        "label": "73581"
+      }
+    ]
+  },
+  {
+    "title": "Victoria metrics uses Clickhouse ??",
+    "links": [
+      {
+        "url": "https://valyala.medium.com/how-victoriametrics-makes-instant-snapshots-for-multi-terabyte-time-series-data-e1f3fb0e0282",
+        "label": "How victoriametrics makes instant snapshots for multi terabyte time series data e1f3fb0e0282"
+      }
+    ]
+  },
+  {
+    "title": "SSDs as an HDD cache !",
+    "links": [
+      {
+        "url": "https://quantum5.ca/2025/05/11/fast-cheap-bulk-storage-using-lvm-to-cache-hdds-on-ssds/",
+        "label": "Fast cheap bulk storage using lvm to cache hdds on ssds"
+      }
+    ]
+  },
+  {
+    "title": "Embedding visualized",
+    "links": [
+      {
+        "url": "https://huggingface.co/spaces/hesamation/primer-llm-embedding?section=bert_%28bidirectional_encoder_representations_from_transformers%29",
+        "label": "Primer llm embedding"
+      }
+    ]
+  },
+  {
+    "title": "Cisco Story",
+    "links": [
+      {
+        "url": "https://www.tcracs.org/tcrwp/1origin-of-cisco/",
+        "label": "1origin of cisco"
+      }
+    ]
+  },
+  {
+    "title": "The history of tech, I guess",
+    "links": [
+      {
+        "url": "https://www.historicaltechtree.com/",
+        "label": "Www.historicaltechtree.com"
+      }
+    ]
+  },
+  {
+    "title": "The hater’s guide to AI",
+    "links": [
+      {
+        "url": "https://www.wheresyoured.at/the-haters-gui/",
+        "label": "The haters gui"
+      }
+    ]
+  },
+  {
+    "title": "Great visual essays",
+    "links": [
+      {
+        "url": "https://pudding.cool/",
+        "label": "Pudding.cool"
+      }
+    ]
+  },
+  {
+    "title": "Optimistic Concurrency Control in GCP IAM",
+    "links": [
+      {
+        "url": "https://www.freecodecamp.org/news/how-databases-guarantee-isolation/",
+        "label": "How databases guarantee isolation"
+      }
+    ]
+  },
+  {
+    "title": "HELM guide",
+    "links": [
+      {
+        "url": "https://medium.com/google-cloud/kubernetes-and-helm-create-your-own-helm-chart-5f54aed894c2",
+        "label": "Kubernetes and helm create your own helm chart 5f54aed894c2"
+      }
+    ]
+  },
+  {
+    "title": "1:1 Personalization",
+    "links": [
+      {
+        "url": "https://blog.zeptonow.com/personalized-search-ranking-the-zepto-way-496d0d405b71",
+        "label": "Personalized search ranking the zepto way 496d0d405b71"
+      }
+    ]
+  },
+  {
+    "title": "SQLite Structure",
+    "links": [
+      {
+        "url": "https://www.sqlite.org/fileformat.html",
+        "label": "Fileformat"
+      }
+    ]
+  },
+  {
+    "title": "The Harvard SIEVE cache",
+    "links": [
+      {
+        "url": "https://sieve-cache.com/",
+        "label": "Sieve cache.com"
+      }
+    ]
+  },
+  {
+    "title": "Awesome SaaS tools we should try",
+    "links": [
+      {
+        "url": "https://firehydrant.com/pricing/",
+        "label": "FireHydrant"
+      },
+      {
+        "url": "https://www.vantage.sh/",
+        "label": "Vantage"
+      }
+    ]
+  },
+  {
+    "title": "PicoGPT",
+    "links": [
+      {
+        "url": "https://github.com/enricozb/picogpt-rust",
+        "label": "Picogpt rust"
+      }
+    ]
+  },
+  {
+    "title": "GPT in 60 lines !",
+    "links": [
+      {
+        "url": "https://jaykmody.com/blog/gpt-from-scratch/",
+        "label": "Gpt from scratch"
+      }
+    ]
+  },
+  {
+    "title": "RustGPT",
+    "links": [
+      {
+        "url": "https://github.com/tekaratzas/RustGPT/tree/main",
+        "label": "Main"
+      }
+    ]
+  },
+  {
+    "title": "Cursor System Prompt",
+    "links": [
+      {
+        "url": "https://gist.github.com/sshh12/25ad2e40529b269a88b80e7cf1c38084",
+        "label": "25ad2e40529b269a88b80e7cf1c38084"
+      }
+    ]
+  },
+  {
+    "title": "Bug in Oracle Unified Audit Trail",
+    "links": [
+      {
+        "url": "https://carsandcode.com/2015/10/01/i-found-a-bug-in-oracle-unified-auditing-or-did-i/",
+        "label": "I found a bug in oracle unified auditing or did i"
+      }
+    ]
+  },
+  {
+    "title": "Defending Wiz",
+    "links": [
+      {
+        "url": "https://pulse.latio.tech/p/wiz-defend-ing-their-flank",
+        "label": "Wiz defend ing their flank"
+      }
+    ]
+  },
+  {
+    "title": "Tutorials ebpf",
+    "links": [
+      {
+        "url": "https://labs.iximiuz.com/tutorials",
+        "label": "Tutorials"
+      }
+    ]
+  },
+  {
+    "title": "How Google managed 130,000 nodes and deployed 1000 pods/s in Kubernetes for fun",
+    "links": [
+      {
+        "url": "https://cloud.google.com/blog/products/containers-kubernetes/how-we-built-a-130000-node-gke-cluster/",
+        "label": "How we built a 130000 node gke cluster"
+      }
+    ]
+  },
+  {
+    "title": "Blob FS in Rust - MaxIO",
+    "links": [
+      {
+        "url": "https://blog.wilsonl.in/blobd/",
+        "label": "Blobd"
+      }
+    ]
+  },
+  {
+    "title": "I like ’em thick",
+    "links": [
+      {
+        "url": "https://www.experimental-history.com/p/i-like-em-thick",
+        "label": "I like ’em thick"
+      }
+    ]
+  },
+  {
+    "title": "Make them a baker, not a consumer",
+    "links": [
+      {
+        "url": "https://www.hagley.org/librarynews/ideas-motivating-people-ernest-dichter",
+        "label": "Ideas motivating people ernest dichter"
+      }
+    ]
+  },
+  {
+    "title": "The classic SRE book",
+    "links": [
+      {
+        "url": "https://sre.google/sre-book/introduction/",
+        "label": "Introduction"
+      }
+    ]
+  },
+  {
+    "title": "Staff",
+    "links": [
+      {
+        "url": "https://lalitm.com/post/why-senior-engineers-let-bad-projects-fail/",
+        "label": "Why senior engineers let bad projects fail"
+      }
+    ]
+  },
+  {
+    "title": "Cloudflare ! TB",
+    "links": [
+      {
+        "url": "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/",
+        "label": "Dns cache memory optimization 1111"
+      }
+    ]
+  },
+  {
+    "title": "Cloudflare’s Gen 12 servers",
+    "links": [
+      {
+        "url": "https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor/",
+        "label": "Cloudflare’s Gen 12 servers"
+      }
+    ]
+  },
+  {
+    "title": "Cloudflare’s Gen 13 server configuration",
+    "links": [
+      {
+        "url": "https://blog.cloudflare.com/gen13-config/",
+        "label": "Cloudflare’s Gen 13 server configuration"
+      }
+    ]
+  },
+  {
+    "title": "A one-line Kubernetes fix that saved 600 hours a year",
+    "links": [
+      {
+        "url": "https://blog.cloudflare.com/one-line-kubernetes-fix-saved-600-hours-a-year/",
+        "label": "A one-line Kubernetes fix that saved 600 hours a year"
+      }
+    ]
+  },
+  {
+    "title": "GC STW page fault",
+    "links": [
+      {
+        "url": "https://frn.sh/stw/",
+        "label": "Stw"
+      }
+    ]
+  },
+  {
+    "title": "Postgres for Text",
+    "links": [
+      {
+        "url": "https://planetscale.com/blog/introducing-tin",
+        "label": "Introducing tin"
+      }
+    ]
+  },
+  {
+    "title": "Cybersecurity is screwed",
+    "links": [
+      {
+        "url": "https://jyn.dev/a-year-to-fix-security/",
+        "label": "A year to fix security"
+      }
+    ]
+  },
+  {
+    "title": "zerocopy : faster copy over networks",
+    "links": [
+      {
+        "url": "https://github.com/acln0/zerocopy",
+        "label": "Zerocopy"
+      }
+    ]
+  }
+]
