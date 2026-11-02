@@ -1,0 +1,22 @@
+---
+interface Props { title: string; description: string; wideIntro?: boolean; }
+const { title, description, wideIntro = false } = Astro.props;
+---
+<section class:list={["page-intro", { "wide-intro": wideIntro }]}><h1>{title}</h1><p>{description}</p></section>
+<style>
+  .page-intro { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; padding: 96px var(--space-page) 64px; border-bottom: var(--border-faint); align-items: end; }
+  h1 { font-size: 80px; line-height: 1; letter-spacing: -.035em; }
+  p { font-size: 17px; line-height: 1.55; color: var(--color-ink-muted); text-wrap: pretty; }
+  @media (min-width: 801px) {
+    .wide-intro { grid-template-columns: minmax(0, 1fr) 400px; align-items: center; }
+  }
+  @media (max-width: 800px) {
+    .page-intro { grid-template-columns: 1fr; gap: 24px; padding-block: 48px 40px; }
+    h1 { font-size: 48px; }
+  }
+  @media screen and (min-width: 1001px) {
+    .page-intro { padding-block: 84px 56px; gap: 56px; }
+    h1 { font-size: 70px; }
+    p { font-size: 15px; }
+  }
+</style>

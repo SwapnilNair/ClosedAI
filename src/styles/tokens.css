@@ -1,42 +1,50 @@
 :root {
-  /* Palette */
-  --color-bg: #faf8f4;
-  --color-surface: #ede9e0;
-  --color-hover: #f3efe6;
-  --color-ink: #1a1814;
-  --color-ink-muted: rgba(26, 24, 20, 0.829);
-  --color-ink-faint: rgba(15, 14, 12, 0.468);
-  --color-accent: #c45e1a;
-  --color-border: rgba(26, 24, 20, 0.1);
-  --color-border-faint: rgba(26, 24, 20, 0.07);
-
-  /* Typography */
-  --font-sans: 'DM Sans', sans-serif;
+  --color-bg: #0b0c0d;
+  --color-surface: #0e0f11;
+  --color-surface-raised: #111214;
+  --color-hover: #12151a;
+  --color-ink: #e8e8e4;
+  --color-ink-muted: #a5a7a3;
+  --color-ink-faint: #8a8c88;
+  --color-accent: #e8e8e4;
+  --color-alert: #f4a370;
+  --color-border: #333538;
+  --color-border-strong: #6a6c68;
+  --color-border-faint: #222426;
+  --font-sans: 'Instrument Sans', 'Inter Tight Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono Variable', ui-monospace, monospace;
   --font-size-xs: 11px;
   --font-size-sm: 13px;
-  --font-size-base: 15px;
-  --font-size-md: 17px;
-  --font-size-lg: 20px;
-  --font-size-xl: 30px;
-  --font-size-hero: clamp(38px, 6vw, 58px);
-
-  /* Spacing */
+  --font-size-base: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 23px;
+  --font-size-xl: clamp(30px, 4vw, 44px);
+  --font-size-hero: clamp(42px, 6vw, 76px);
   --space-page: 48px;
-  --space-section: 56px;
-
-  /* Layout */
-  --max-width: 1140px;
-
-  /* Misc */
-  --border: 0.5px solid var(--color-border);
-  --border-faint: 0.5px solid var(--color-border-faint);
-  --radius: 0px;
-  /* sharp edges everywhere — change here if ever softening */
+  --space-section: 88px;
+  --max-width: 1344px;
+  --reading-width: 760px;
+  --border: 1px solid var(--color-border);
+  --border-faint: 1px solid var(--color-border-faint);
+  --radius: 0;
 }
 
 @media (max-width: 640px) {
   :root {
     --space-page: 20px;
-    --space-section: 40px;
+    --space-section: 64px;
+  }
+}
+
+/* Compact desktop rhythm; mobile and print retain their existing sizes. */
+@media screen and (min-width: 1001px) {
+  :root {
+    --space-page: 42px;
+    --space-section: 77px;
+    --font-size-base: 15px;
+    --font-size-md: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: clamp(27px, 3.5vw, 39px);
+    --font-size-hero: clamp(37px, 5.25vw, 67px);
   }
 }

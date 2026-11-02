@@ -1,45 +1,30 @@
 ---
-const socials = [
+const links = [
   { href: 'https://github.com/swapnilnair', label: 'GitHub' },
   { href: 'https://www.linkedin.com/in/swapnilnair1/', label: 'LinkedIn' },
-  { href: 'https://www.instagram.com/swapnilnair1', label: 'Insta' },
+  { href: '/rss.xml', label: 'RSS' },
+  { href: '/uses', label: 'Uses' },
 ];
 ---
 
 <footer>
-  <span class="name">closedai.in by Swapnil Nair</span>
+  <span class="name">Swapnil Nair</span>
   <ul>
-    {socials.map(s => (
-      <li><a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a></li>
+    {links.map((link) => (
+      <li><a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>{link.label}</a></li>
     ))}
   </ul>
 </footer>
 
 <style>
-  footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px var(--space-page);
-    border-top: var(--border);
-    margin-top: auto;
-  }
+  footer { display: flex; align-items: center; justify-content: space-between; padding: 28px var(--space-page); border-top: var(--border-faint); margin-top: auto; font-size: 14px; }
+  .name { color: var(--color-ink); }
+  ul { display: flex; gap: 28px; list-style: none; color: var(--color-ink-faint); }
+  a:hover { color: var(--color-ink); }
+  @media (max-width: 640px) { footer { align-items: flex-start; gap: 14px; flex-direction: column; padding: 24px 20px 32px; } ul { flex-wrap: wrap; gap: 20px; } }
 
-  .name {
-    font-size: var(--font-size-xs);
-    color: var(--color-ink-faint);
-    letter-spacing: 0.1em;
-  }
-
-  ul {
-    display: flex;
-    gap: 28px;
-  }
-
-  ul a {
-    font-size: var(--font-size-xs);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-ink-faint);
+  @media screen and (min-width: 1001px) {
+    footer { padding-block: 24px; font-size: 13px; }
+    ul { gap: 24px; }
   }
 </style>

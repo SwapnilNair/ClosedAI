@@ -1,0 +1,39 @@
+  <section class="about-hero">
+    <div class="about-copy">
+      <h1>Engineer by default.<br><span>Curious by compulsion.</span></h1>
+      <p class="opening">I am an engineer at Aurva, where I lead AI-security development and work across the full loop: finding the problem, building the system, getting it into production, and learning from the people who use it.</p>
+    </div>
+    <figure>
+      <img src="/hero.png" alt="Portrait of Swapnil Nair" width="480" height="640" loading="eager" fetchpriority="high" />
+      <figcaption>Swapnil Nair · Bengaluru, India</figcaption>
+    </figure>
+  </section>
+
+<style>
+  .about-hero { display: grid; grid-template-columns: minmax(0, 1fr) 260px; max-width: 1120px; margin-inline: auto; gap: 48px; padding: 56px var(--space-page); align-items: center; }
+  h1 { max-width: 700px; margin-top: 22px; font-size: clamp(36px, 4.8vw, 60px); line-height: 1.04; letter-spacing: -.035em; }
+  h1 span { color: var(--color-ink-faint); font-weight: 400; }
+  .opening { max-width: 660px; margin-top: 26px; font-size: 18px; line-height: 1.65; color: var(--color-ink-muted); }
+  figure { width: 260px; margin: 0; justify-self: end; border: var(--border); background: var(--color-surface); }
+  figure img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+  figcaption { padding: 10px 12px; border-top: var(--border-faint); font-family: var(--font-mono); font-size: 9px; letter-spacing: .09em; text-transform: uppercase; color: var(--color-ink-faint); }
+  @media (max-width: 900px) {
+    .about-hero { grid-template-columns: 1fr; }
+    .about-hero { gap: 44px; }
+    figure { width: min(100%, 260px); justify-self: start; }
+  }
+
+  @media (max-width: 600px) {
+    .about-hero { gap: 34px; padding-block: 56px; }
+    h1 { font-size: clamp(36px, 11vw, 46px); }
+    .opening { margin-top: 22px; font-size: 17px; }
+    figure { width: min(100%, 220px); justify-self: center; }
+  }
+
+  @media screen and (min-width: 1001px) {
+    .about-hero { padding-block: 52px; gap: 48px; grid-template-columns: minmax(0, 1fr) 240px; }
+    h1 { margin-top: 0; font-size: clamp(32px, 4.2vw, 53px); }
+    .opening { margin-top: 23px; font-size: 16px; }
+    figure { width: 240px; }
+  }
+</style>

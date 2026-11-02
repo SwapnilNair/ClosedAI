@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../utils/content';
+interface Props { posts: CollectionEntry<'blog'>[]; showIndex?: boolean; }
+const { posts } = Astro.props;
+---
+<div class="writing-list">
+  {posts.map((post) => <a class="writing-row" href={`/blog/${post.id}`}>
+    <time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt, true)}</time>
+    <span class="row-main"><strong>{post.data.title}</strong><span class="description">{post.data.description}</span></span>
+    <span class="topic">{post.data.topics[0]}</span>
+  </a>)}
+</div>
+<style>
+  .writing-row { display: grid; grid-template-columns: 140px minmax(0,1fr) 200px; gap: 40px; padding: 32px var(--space-page); border-bottom: 1px solid #1e2022; align-items: baseline; }
+  .writing-row:hover { background: var(--color-surface); }
+  time, .topic { font-size: 14px; color: var(--color-ink-faint); }
+  .topic { text-align: right; }
+  .row-main { display: flex; flex-direction: column; gap: 8px; }
+  strong { font-size: 24px; letter-spacing: -.015em; line-height: 1.25; font-weight: 400; }
+  .description { font-size: 16px; line-height: 1.5; color: var(--color-ink-faint); text-wrap: pretty; }
+  @media (max-width: 1000px) { .writing-row { grid-template-columns: 110px minmax(0,1fr) 100px; gap: 24px; } }
+  @media (max-width: 640px) { .writing-row { grid-template-columns: 1fr auto; gap: 12px; padding-block: 24px; } .row-main { grid-column: 1 / -1; grid-row: 2; } strong { font-size: 21px; } .description { font-size: 15px; } time, .topic { font-size: 13px; } }
+
+  @media screen and (min-width: 1001px) {
+    .writing-row { padding-block: 28px; gap: 35px; }
+    strong { font-size: 21px; }
+    .description { font-size: 14px; }
+    time, .topic { font-size: 13px; }
+  }
+</style>

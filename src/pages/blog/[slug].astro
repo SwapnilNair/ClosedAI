@@ -1,155 +1,220 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { formatDate, publishedPosts, readingTime } from '../../utils/content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  const posts = publishedPosts(await getCollection('blog'));
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, posts } }));
 }
 
-const { post } = Astro.props;
+const { post, posts } = Astro.props;
 const { Content } = await render(post);
-
-function formatDate(d: Date) {
-  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-}
+const currentIndex = posts.findIndex((item) => item.id === post.id);
+const seriesPosts = post.data.series
+  ? posts.filter((item) => item.data.series === post.data.series).sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0))
+  : [];
+const seriesIndex = seriesPosts.findIndex((item) => item.id === post.id);
+const previous = post.data.series ? seriesPosts[seriesIndex - 1] : posts[currentIndex + 1];
+const next = post.data.series ? seriesPosts[seriesIndex + 1] : posts[currentIndex - 1];
+const canonical = new URL(`/blog/${post.id}`, Astro.site);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  dateModified: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
+  author: { '@type': 'Person', name: 'Swapnil Nair', url: new URL('/about', Astro.site).href },
+  mainEntityOfPage: canonical.href,
+};
 ---
 
-<Base title={`${post.data.title} — closedai.in`} description={post.data.description}>
-  <article class="post-wrap">
-    <div class="post-inner">
-      <a href="/blog" class="back">← All posts</a>
-
-      <header>
-        <h1>{post.data.title}</h1>
-        <div class="meta">
-          <span class="date">{formatDate(post.data.date)}</span>
-          <span class="tag">{post.data.tag}</span>
-        </div>
-      </header>
-
-      <div class="body">
-        <Content />
+<Base title={`${post.data.title} — Swapnil Nair`} description={post.data.description} image={post.data.image} type="article">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script slot="head" is:inline>
+    // Restore the reading preference before paint, only on article pages.
+    try {
+      if (localStorage.getItem('article-theme') === 'light') {
+        document.documentElement.dataset.readingTheme = 'light';
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#faf9f6');
+      }
+    } catch { /* Reading still works when storage is unavailable. */ }
+  </script>
+  <article>
+    <header class="article-head">
+      <h1>{post.data.title}</h1>
+      <p class="dek">{post.data.description}</p>
+      <div class="share-tools">
+      <div class="article-meta">
+        <img src="/hero.png" alt="" width="48" height="48" />
+        <div><a href="/about">Swapnil Nair</a><p><time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time> · {readingTime(post.body)}</p>
+        {post.data.updatedAt && <p>Updated {formatDate(post.data.updatedAt)}</p>}</div>
       </div>
-    </div>
+        <div class="article-actions">
+        <button class="share-button" type="button" data-share-url={canonical.href} aria-label="Share article: copy link">Share ↗</button>
+        <button class="theme-toggle" type="button" aria-label="Light reading mode" aria-pressed="false" title="Switch to light reading mode">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" /></svg>
+        </button>
+        </div>
+        <span class="share-status" role="status" aria-live="polite"></span>
+        <label class="share-fallback" hidden>Copy this article link<input type="text" readonly value={canonical.href} /></label>
+      </div>
+    </header>
+
+    <div class="article-layout"><div class="prose"><Content /></div></div>
+    {(previous || next) && <nav class="article-footer" aria-label="Article navigation">
+      {previous && <a class="article-link previous-post" href={`/blog/${previous.id}`} rel="prev"><span aria-hidden="true">←</span><span><small>Previous</small><strong>{previous.data.title}</strong></span></a>}
+      {next && <a class="article-link next-post" href={`/blog/${next.id}`} rel="next"><span><small>Next</small><strong>{next.data.title}</strong></span><span aria-hidden="true">→</span></a>}
+    </nav>}
   </article>
+  <script>
+    const themeToggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+    const syncReadingTheme = () => {
+      const light = document.documentElement.dataset.readingTheme === 'light';
+      themeToggle?.setAttribute('aria-pressed', String(light));
+      themeToggle?.setAttribute('title', `Switch to ${light ? 'dark' : 'light'} reading mode`);
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', light ? '#faf9f6' : '#0b0c0d');
+    };
+    syncReadingTheme();
+    themeToggle?.addEventListener('click', () => {
+      const theme = document.documentElement.dataset.readingTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.dataset.readingTheme = theme;
+      try { localStorage.setItem('article-theme', theme); }
+      catch { /* Keep the toggle usable without persistent storage. */ }
+      syncReadingTheme();
+    });
+    document.querySelectorAll<HTMLButtonElement>('[data-share-url]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const url = button.dataset.shareUrl;
+        const container = button.closest('.share-tools');
+        const status = container?.querySelector<HTMLElement>('.share-status');
+        const fallback = container?.querySelector<HTMLElement>('.share-fallback');
+        if (!url || !status || !fallback) return;
+        try {
+          await navigator.clipboard.writeText(url);
+          status.textContent = 'Link copied';
+          fallback.hidden = true;
+        } catch {
+          status.textContent = 'Select and copy the link below.';
+          fallback.hidden = false;
+          const input = fallback.querySelector('input');
+          input?.focus();
+          input?.select();
+        }
+      });
+    });
+  </script>
 </Base>
-
 <style>
-  .post-wrap {
-    padding: var(--space-section) var(--space-page);
+  :global(html[data-reading-theme='light']) {
+    color-scheme: light;
+    --color-bg: #faf9f6;
+    --color-surface: #f0efeb;
+    --color-surface-raised: #e9e8e3;
+    --color-hover: #eeede8;
+    --color-ink: #20221f;
+    --color-ink-muted: #51554f;
+    --color-ink-faint: #60645d;
+    --color-accent: #303a2c;
+    --color-border: #cecec6;
+    --color-border-strong: #85897e;
+    --color-border-faint: #deded6;
+    --color-prose: #383c35;
+    --color-heading: #171b15;
+  }
+  .article-actions { display: flex; align-items: center; gap: 8px; }
+  .theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border: var(--border); background: transparent; color: var(--color-ink); cursor: pointer; }
+  .theme-toggle:hover { background: var(--color-hover); border-color: var(--color-border-strong); }
+  .moon-icon { display: none; }
+  :global(html[data-reading-theme='light']) .sun-icon { display: none; }
+  :global(html[data-reading-theme='light']) .moon-icon { display: block; }
+  :global(html[data-reading-theme='light']) .prose :global(pre) { background: #0e0f11 !important; color: #e8e8e4; }
+  @media (max-width: 480px) {
+    .share-tools .article-meta { grid-column: 1 / -1; }
+    .article-actions { grid-column: 1 / -1; }
   }
 
-  .post-inner {
-    max-width: 680px;
-    margin: 0 auto;
+  .article-head { max-width: var(--reading-width); margin: 0 auto; padding: 80px 0 36px; border-bottom: var(--border-faint); }
+  h1 { font-size: 44px; line-height: 1.12; letter-spacing: -.025em; font-weight: 600; }
+  .dek { margin-top: 20px; font-size: 18px; line-height: 1.4; color: var(--color-ink-faint); text-wrap: pretty; }
+  .article-meta { display: flex; align-items: center; gap: 14px; min-width: 0; font-size: 15px; }
+  .article-meta img { width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; object-fit: cover; }
+  .article-meta a { font-weight: 500; }
+  .article-meta p { color: var(--color-ink-faint); margin-top: 2px; }
+  .share-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px 20px; margin-top: 32px; }
+  .share-button { padding: 9px 16px; min-height: 44px; border: var(--border); background: transparent; color: var(--color-ink); font-size: 14px; cursor: pointer; }
+  .share-button:hover { background: var(--color-hover); border-color: var(--color-border-strong); }
+  .share-status:empty { display: none; }
+  .share-status { grid-column: 1 / -1; text-align: right; font-size: 14px; color: var(--color-ink-muted); }
+  .share-fallback { grid-column: 1 / -1; width: 100%; font-size: 14px; color: var(--color-ink-muted); }
+  .share-fallback input { display: block; width: 100%; margin-top: 8px; padding: 10px; background: var(--color-surface); color: var(--color-ink); border: var(--border); }
+  .article-layout { padding: 40px var(--space-page) 96px; }
+  .prose { max-width: var(--reading-width); margin: 0 auto; min-width: 0; font-size: 17px; line-height: 1.7; color: var(--color-prose, #c5c7c3); overflow-wrap: break-word; }
+  .prose :global(p) { margin: 0 0 28px; text-wrap: pretty; }
+  .prose :global(h2) { margin: 56px 0 24px; font-size: 34px; line-height: 1.2; font-weight: 500; letter-spacing: -.025em; color: var(--color-heading, #f3f3ef); }
+  .prose :global(h3) { margin: 40px 0 20px; font-size: 27px; line-height: 1.25; font-weight: 500; letter-spacing: -.015em; color: var(--color-heading, #f3f3ef); }
+  .prose :global(ul), .prose :global(ol) { margin: 0 0 28px; padding-left: 28px; }
+  .prose :global(li) { margin-bottom: 9px; }
+  .prose :global(a) { text-decoration: underline; text-underline-offset: 3px; color: var(--color-ink); }
+  .prose :global(strong) { color: var(--color-heading, #edede9); font-weight: 600; }
+  .prose :global(blockquote) { margin: 36px 0; padding: 20px 24px; border-left: 2px solid var(--color-ink-faint); background: var(--color-surface); }
+  .prose :global(code) { padding: 2px 5px; background: var(--color-surface-raised); font-family: var(--font-mono); font-size: .82em; }
+  .prose :global(pre) { margin: 30px 0; padding: 22px; overflow-x: auto; border: var(--border); background: var(--color-surface) !important; }
+  .prose :global(pre code) { padding: 0; background: none; }
+  .prose :global(hr) { margin: 48px 0; border: 0; border-top: var(--border); }
+  .prose :global(figure) { width: min(1000px, calc(100vw - 194px)); max-width: none; margin: 48px 0; position: relative; left: 50%; transform: translateX(-50%); }
+  .prose :global(figure img) { width: 100%; height: auto; }
+  .prose :global(figcaption) { max-width: var(--reading-width); margin: 12px auto 0; font-size: 15px; color: var(--color-ink-faint); }
+  .prose :global(table) { display: block; overflow-x: auto; border-collapse: collapse; margin-bottom: 28px; }
+  .prose :global(td), .prose :global(th) { padding: 10px; border: var(--border); text-align: left; }
+  .article-footer { border-top: var(--border-faint); display: grid; grid-template-columns: 1fr 1fr; }
+  .previous-post { grid-column: 1; border-right: var(--border-faint); }
+  .next-post { grid-column: 2; }
+  .article-link:hover { background: var(--color-hover); }
+  .article-link { padding: 40px var(--space-page); display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: 24px; }
+  .article-link small { display: block; font-size: 14px; color: var(--color-ink-faint); margin-bottom: 6px; }
+  .article-link strong { display: block; font-size: 22px; line-height: 1.35; letter-spacing: -.015em; font-weight: 400; }
+  @media (max-width: 1000px) { .article-head { margin-inline: var(--space-page); } }
+  @media (max-width: 640px) {
+    .article-head { padding: 32px 0 24px; }
+    h1 { font-size: 30px; line-height: 1.15; letter-spacing: -.02em; }
+    .dek { margin-top: 14px; font-size: 16px; }
+    .share-tools { margin-top: 20px; column-gap: 12px; }
+    .article-meta { gap: 12px; font-size: 14px; }
+    .article-meta img { width: 40px; height: 40px; }
+    .article-layout { padding: 28px 20px 40px; }
+    .prose :global(p) { margin-bottom: 22px; }
+    .prose :global(h2) { font-size: 28px; margin: 42px 0 20px; }
+    .prose :global(h3) { font-size: 23px; }
+    .prose :global(figure) { width: 100vw; margin-block: 28px; }
+    .prose :global(figcaption) { padding-inline: 20px; font-size: 14px; }
+    .article-footer { grid-template-columns: 1fr; }
+    .previous-post, .next-post { grid-column: 1; border-right: 0; }
+    .previous-post + .next-post { border-top: var(--border-faint); }
+    .article-link { padding: 24px 20px; font-size: 20px; }
+    .article-link strong { font-size: 18px; }
+    .article-link small { font-size: 13px; }
   }
 
-  .back {
-    display: inline-block;
-    font-size: var(--font-size-xs);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    opacity: 0.65;
-    margin-bottom: 40px;
-  }
-
-  header {
-    padding-bottom: 32px;
-    border-bottom: var(--border);
-    margin-bottom: 40px;
-  }
-
-  h1 {
-    font-size: var(--font-size-xl);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-
-  .meta {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .date {
-    font-size: var(--font-size-xs);
-    color: var(--color-ink-faint);
-    letter-spacing: 0.06em;
-  }
-
-  .tag {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(196, 94, 26, 0.65);
-  }
-
-  .body {
-    font-size: var(--font-size-base);
-    line-height: 1.8;
-    color: var(--color-ink-muted);
-  }
-
-  .body :global(p) {
-    margin-bottom: 20px;
-  }
-
-  .body :global(h2) {
-    font-size: var(--font-size-md);
-    font-weight: 500;
-    color: var(--color-ink);
-    border-left: 2px solid var(--color-accent);
-    padding-left: 12px;
-    margin: 40px 0 16px;
-    line-height: 1.3;
-  }
-
-  .body :global(h3) {
-    font-size: var(--font-size-base);
-    font-weight: 500;
-    color: var(--color-ink);
-    margin: 32px 0 12px;
-  }
-
-  .body :global(ul) {
-    margin-bottom: 20px;
-    padding-left: 20px;
-  }
-
-  .body :global(ul li) {
-    list-style: disc;
-    margin-bottom: 8px;
-  }
-
-  .body :global(strong) {
-    font-weight: 500;
-    color: var(--color-ink);
-  }
-
-  .body :global(code) {
-    font-family: 'Menlo', 'Monaco', monospace;
-    font-size: 13px;
-    background: var(--color-surface);
-    padding: 2px 6px;
-    color: var(--color-ink);
-  }
-
-  .body :global(pre) {
-    background: var(--color-surface);
-    padding: 20px;
-    overflow-x: auto;
-    margin-bottom: 20px;
-  }
-
-  .body :global(pre code) {
-    background: none;
-    padding: 0;
+  @media screen and (min-width: 1001px) {
+    .article-head { padding-block: 70px 32px; }
+    h1 { font-size: 39px; }
+    .dek { margin-top: 18px; font-size: 16px; }
+    .article-meta { gap: 12px; font-size: 14px; }
+    .article-meta img { width: 42px; height: 42px; }
+    .share-tools { margin-top: 28px; }
+    .share-button { padding: 8px 14px; }
+    .article-layout { padding-block: 35px 84px; }
+    .prose :global(p) { margin-bottom: 24px; }
+    .prose :global(h2) { margin: 49px 0 21px; font-size: 30px; }
+    .prose :global(h3) { margin: 35px 0 18px; font-size: 24px; }
+    .prose :global(ul), .prose :global(ol) { margin-bottom: 24px; padding-left: 24px; }
+    .prose :global(blockquote) { margin-block: 32px; padding: 18px 21px; }
+    .prose :global(pre) { margin-block: 26px; padding: 19px; }
+    .prose :global(hr), .prose :global(figure) { margin-block: 42px; }
+    .article-link { padding-block: 35px; }
+    .article-link strong { font-size: 20px; }
   }
 </style>

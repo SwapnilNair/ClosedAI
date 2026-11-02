@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import IndexHeader from '../../components/IndexHeader.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import { getCollection } from 'astro:content';
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Selected work — Swapnil Nair" description="Selected systems and product work across AI security, data infrastructure, cloud identity, and runtime engineering.">
+  <IndexHeader wideIntro title="Work" description="Selected systems and products across AI security, data infrastructure, and cloud engineering. What I built, the decisions behind it, and what made it into production." />
+  <section class="work-wrap">
+    <div class="work-grid">{work.map((item, index) => <WorkCard item={item} index={index} />)}</div>
+  </section>
+</Base>
+
+<style>
+  .work-wrap { padding: 40px var(--space-page) var(--space-section); }
+  .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  @media (max-width: 700px) {
+    .work-wrap { padding-top: 24px; }
+    .work-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import Base from '../../../layouts/Base.astro';
+import WritingList from '../../../components/WritingList.astro';
+import { getCollection } from 'astro:content';
+import { publishedPosts } from '../../../utils/content';
+
+export async function getStaticPaths() {
+  const posts = publishedPosts(await getCollection('blog'));
+  const topics = [...new Set(posts.flatMap((post) => post.data.topics))];
+  return topics.map((topic) => ({ params: { topic: topic.toLowerCase().replaceAll(' ', '-') }, props: { topic, posts: posts.filter((post) => post.data.topics.includes(topic)) } }));
+}
+
+const { topic, posts } = Astro.props;
+---
+
+<Base title={`${topic} writing — Swapnil Nair`} description={`Articles about ${topic} by Swapnil Nair.`}>
+  <section class="topic-head">
+    <a class="mono-label" href="/blog">← Writing index</a>
+    <span class="mono-label accent">TOPIC · {String(posts.length).padStart(2, '0')} ARTICLES</span>
+    <h1>{topic}</h1>
+    <p>Articles and field notes filed under {topic.toLowerCase()}.</p>
+  </section>
+  <section class="section"><div class="container"><WritingList posts={posts} /></div></section>
+</Base>
+
+<style>
+  .topic-head { padding: 72px var(--space-page); }
+  .topic-head > span { display: block; margin-top: 60px; }
+  h1 { margin-top: 17px; font-size: var(--font-size-hero); letter-spacing: -.04em; }
+  p { margin-top: 14px; font-size: 18px; color: var(--color-ink-muted); }
+
+  @media screen and (min-width: 1001px) {
+    .topic-head { padding-block: 63px; }
+    p { font-size: 16px; }
+  }
+</style>

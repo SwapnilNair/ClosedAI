@@ -1,0 +1,15 @@
+---
+interface Props { title?: string | string[]; description?: string; }
+const { title, description } = Astro.props;
+const titleLines = Array.isArray(title) ? title : title ? [title] : [];
+---
+<header class="section-head">
+  {titleLines.length > 0 && <h2>{titleLines.map((line) => <span>{line}</span>)}</h2>}
+  {description && <p>{description}</p>}
+</header>
+<style>
+  .section-head { max-width: 760px; margin-bottom: 42px; }
+  h2 { font-size: var(--font-size-xl); line-height: 1.08; letter-spacing: -.025em; }
+  h2 span { display: block; }
+  p { max-width: 640px; margin-top: 15px; font-size: 16px; color: var(--color-ink-muted); }
+</style>

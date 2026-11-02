@@ -1,8 +1,10 @@
 ---
 title: "Prompt Injection at Scale: What Production Actually Looks Like"
-date: 2026-03-28
-tag: "Security"
 description: "Everyone talks about prompt injection in demos. Nobody talks about what it looks like when you have 3000 requests per hour and a model that's been told to be helpful at all costs."
+publishedAt: 2026-03-28
+topics: ["AI Security", "Product Engineering"]
+featured: true
+draft: false
 ---
 
 Everyone talks about prompt injection in demos. Nobody talks about what it looks like when you have 3000 requests per hour and a model that's been told to be helpful at all costs.
@@ -23,7 +25,7 @@ This is where I started questioning if I should head for the Himalayas.
 
 ## What I now think we as an industry should be doing
 
-After some reflection and talking to a couple of friend, the following is currently on my mind :
+After some reflection and talking to a couple of friends, the following is currently on my mind:
 
 - Prompt injection is a real problem, but perfect detection isn't the goal. Nobody achieves 100% detection - the bar is catching the 99th percentile of real attacks while keeping false positives low enough that on-call engineers don't start ignoring alerts.
 
@@ -42,4 +44,4 @@ Also a good lesson on validating the problem before jumping ahead to solving it.
 ---
 
 If you have thoughts on this, I'd genuinely like to hear them.
-Mail me at <u>swapnilnair747@gmail.com</u> or <u>swapnil.nair@aurva.io</u> so that I can give you my contact number
+Mail me at [swapnilnair747@gmail.com](mailto:swapnilnair747@gmail.com) if you want to continue the conversation.

@@ -1,0 +1,130 @@
+---
+const layers = [
+  { name: 'Product', detail: 'Customer workflows · AIOStack · AIDA' },
+  { name: 'Cloud & identity', detail: 'IAM · roles · policies · infrastructure context' },
+  { name: 'Data & protocols', detail: 'Wire protocols · prompts · data flows' },
+  { name: 'Runtime', detail: 'Linux · eBPF · Kubernetes · networking' },
+];
+
+const process = ['Observe', 'Correlate', 'Constrain', 'Ship'];
+---
+
+<div class="hero-surface" role="img" aria-label="Engineering work spanning the Linux runtime, data protocols, cloud identity, and product systems">
+  <div class="surface-head">
+    <span>Engineering surface</span>
+    <span>Current focus</span>
+  </div>
+
+  <div class="surface-body">
+    <div class="surface-stack">
+      {layers.map((layer) => (
+        <div class="surface-row">
+          <strong>{layer.name}</strong>
+          <span>{layer.detail}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="surface-process" aria-hidden="true">
+      {process.map((step) => <span>{step}</span>)}
+    </div>
+  </div>
+
+  <div class="surface-foot">
+    <span>Runtime to product</span>
+    <span>Security · observability · systems</span>
+  </div>
+</div>
+
+<style>
+  .hero-surface {
+    min-height: 560px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: var(--border);
+    background: var(--color-surface);
+  }
+
+  .surface-head,
+  .surface-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  .surface-head { border-bottom: var(--border-faint); }
+  .surface-foot { margin-top: auto; border-top: var(--border-faint); }
+
+  .surface-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 34px 28px;
+    background-image:
+      linear-gradient(var(--color-border-faint) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border-faint) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .surface-stack {
+    border: var(--border);
+    background: rgba(8, 9, 11, .94);
+  }
+
+  .surface-row {
+    min-height: 86px;
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 22px;
+    align-items: center;
+    padding: 18px;
+    border-bottom: var(--border-faint);
+  }
+
+  .surface-row:last-child { border-bottom: 0; }
+  .surface-row strong { font-size: 15px; font-weight: 500; }
+  .surface-row span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+  }
+
+  .surface-process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 24px;
+  }
+
+  .surface-process span {
+    padding: 8px 6px;
+    border: var(--border-faint);
+    background: rgba(8, 9, 11, .9);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  @media (max-width: 980px) {
+    .hero-surface { min-height: 520px; }
+  }
+
+  @media (max-width: 700px) {
+    .hero-surface { min-height: 0; }
+    .surface-body { padding: 22px 14px; }
+    .surface-row { min-height: 0; grid-template-columns: 1fr; gap: 4px; padding: 16px; }
+    .surface-process { grid-template-columns: 1fr 1fr; }
+    .surface-foot { align-items: flex-start; flex-direction: column; gap: 4px; }
+  }
+</style>

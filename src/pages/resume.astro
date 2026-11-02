@@ -1,0 +1,251 @@
+---
+import Base from '../layouts/Base.astro';
+
+const capabilities = [
+  ['Systems', 'Go, Linux, eBPF, networking, protocol state machines'],
+  ['Data', 'Storage engines, database protocols, data flows, observability'],
+  ['Infrastructure', 'Kubernetes, cloud APIs, workload identity, self-hosted systems'],
+  ['AI', 'Agentic systems, model infrastructure, evaluation, AI security'],
+];
+
+const selectedWork = [
+  {
+    title: 'AIOStack by Aurva',
+    href: '/work/aiostack',
+    summary: 'Runtime security and observability for AI agents, models, identities, endpoints, and data flows without application code changes.',
+  },
+  {
+    title: 'AIDA by Aurva',
+    href: '/work/aida',
+    summary: 'Non-intrusive database activity monitoring across more than twenty database variants and heterogeneous cloud environments.',
+  },
+  {
+    title: 'Agentic AI in enterprises',
+    href: '/work/agentic-ai-enterprises',
+    summary: 'Research into the operational, security, and economic failure modes of autonomous systems in production.',
+  },
+];
+---
+
+<Base title="Resume — Swapnil Nair" description="Resume of Swapnil Nair, an AI security and systems engineer in Bengaluru.">
+  <article class="resume-page">
+    <header class="resume-header">
+      <div class="identity">
+        <p class="print-name">Swapnil Nair</p>
+        <h1>Resume.</h1>
+        <p class="summary">Systems engineer working across AI security, runtime observability, data infrastructure, and zero-to-one product development.</p>
+        <div class="contact-links" aria-label="Contact links">
+          <span>Bengaluru, India</span>
+          <a href="https://www.linkedin.com/in/swapnilnair1/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/swapnilnair" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <aside class="download-panel" aria-label="Resume download help">
+        <button class="button button-primary" type="button" data-download-resume aria-keyshortcuts="D">
+          Download / save PDF <span aria-hidden="true">↓</span>
+        </button>
+        <p><kbd>D</kbd> opens the print dialog. Choose <strong>Save as PDF</strong> to download a clean copy.</p>
+      </aside>
+    </header>
+
+    <div class="resume-body">
+      <section class="resume-section experience">
+        <h2>Experience</h2>
+        <div class="section-content">
+          <div class="role-head">
+            <div>
+              <h3>Aurva</h3>
+              <p>AI security lead · Core systems engineer</p>
+            </div>
+            <time>2024-present</time>
+          </div>
+          <p class="role-summary">I lead AI-security development and work across the complete product loop: problem discovery, system design, implementation, production deployment, and customer feedback.</p>
+          <ul>
+            <li>Lead development of AIOStack, correlating Linux runtime signals with Kubernetes and cloud control-plane context to make AI workloads, identities, endpoints, and data flows visible.</li>
+            <li>Built protocol and runtime components for AIDA, a database activity monitoring system supporting more than twenty database variants across enterprise environments in APAC and EMEA.</li>
+            <li>Design non-intrusive systems around eBPF, wire-protocol state machines, cloud APIs, and workload identity, with explicit handling for partial evidence and unfamiliar traffic.</li>
+            <li>Work directly with users to turn security and infrastructure constraints into products that can be deployed and operated in real environments.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Selected work</h2>
+        <div class="section-content project-list">
+          {selectedWork.map((project) => (
+            <a class="project" href={project.href}>
+              <h3>{project.title}<span aria-hidden="true">↗</span></h3>
+              <p>{project.summary}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Technical range</h2>
+        <dl class="section-content capability-list">
+          {capabilities.map(([name, detail]) => (
+            <div>
+              <dt>{name}</dt>
+              <dd>{detail}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section class="resume-section final-section">
+        <h2>Writing & research</h2>
+        <div class="section-content writing-note">
+          <p>I write about technology, business, markets, security, and the systems behind modern products.</p>
+          <a href="/blog">Read the writing archive <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </div>
+  </article>
+
+  <script>
+    const downloadButton = document.querySelector<HTMLButtonElement>('[data-download-resume]');
+    const openPrintDialog = () => window.print();
+
+    downloadButton?.addEventListener('click', openPrintDialog);
+
+    window.addEventListener('keydown', (event) => {
+      const target = event.target;
+      const isTyping = target instanceof HTMLElement
+        && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName));
+
+      if (event.defaultPrevented || isTyping || event.metaKey || event.ctrlKey || event.altKey) return;
+
+      if (event.key.toLowerCase() === 'd') {
+        event.preventDefault();
+        openPrintDialog();
+      }
+    });
+  </script>
+</Base>
+
+<style>
+  .resume-page { width: min(100%, 1080px); margin: 0 auto; padding: 76px var(--space-page) 96px; }
+  .print-name { display: none; }
+  .resume-header { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 72px; align-items: end; padding-bottom: 58px; }
+  h1 { font-size: clamp(38px, 4.8vw, 60px); line-height: 1; letter-spacing: -.035em; }
+  .summary { max-width: 670px; margin-top: 24px; font-size: 19px; line-height: 1.55; color: var(--color-ink-muted); }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 28px; font-size: 13px; color: var(--color-ink-muted); }
+  .contact-links a { color: var(--color-ink); }
+  .contact-links a:hover { color: var(--color-accent); }
+  .download-panel { padding: 18px; border: var(--border); background: var(--color-surface); }
+  .download-panel .button { width: 100%; cursor: pointer; }
+  .download-panel p { margin-top: 14px; font-size: 12px; line-height: 1.55; color: var(--color-ink-faint); }
+  .download-panel strong { font-weight: 500; color: var(--color-ink-muted); }
+  kbd { display: inline-flex; min-width: 22px; height: 22px; margin-right: 4px; align-items: center; justify-content: center; border: var(--border); background: var(--color-bg); font-family: var(--font-mono); font-size: 10px; color: var(--color-ink); }
+
+  .resume-body { border-top: var(--border); }
+  .resume-section { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 56px; padding: 48px 0; border-bottom: var(--border-faint); }
+  .resume-section > h2 { font-size: 14px; line-height: 1.4; font-weight: 600; color: var(--color-ink-muted); }
+  .section-content { min-width: 0; }
+  .role-head { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; }
+  .role-head h3 { font-size: 24px; line-height: 1.2; }
+  .role-head p { margin-top: 5px; font-size: 14px; color: var(--color-ink-muted); }
+  .role-head time { flex: 0 0 auto; font-size: 13px; color: var(--color-ink-faint); }
+  .role-summary { max-width: 700px; margin-top: 24px; font-size: 15px; line-height: 1.7; color: var(--color-ink-muted); }
+  .experience ul { display: grid; gap: 12px; margin-top: 24px; padding-left: 18px; }
+  .experience li { padding-left: 5px; font-size: 14px; line-height: 1.65; color: var(--color-ink-muted); }
+  .experience li::marker { color: var(--color-accent); }
+
+  .project-list { border-top: var(--border-faint); }
+  .project { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; padding: 20px 0; border-bottom: var(--border-faint); }
+  .project h3 { font-size: 15px; line-height: 1.4; font-weight: 500; }
+  .project h3 span { margin-left: 7px; color: var(--color-accent); }
+  .project p { font-size: 13px; line-height: 1.6; color: var(--color-ink-muted); }
+  .project:hover h3 { color: var(--color-accent); }
+
+  .capability-list { margin: 0; border-top: var(--border-faint); }
+  .capability-list > div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 32px; padding: 16px 0; border-bottom: var(--border-faint); }
+  .capability-list dt { font-size: 14px; font-weight: 500; }
+  .capability-list dd { margin: 0; font-size: 13px; color: var(--color-ink-muted); }
+  .writing-note p { max-width: 620px; font-size: 15px; line-height: 1.65; color: var(--color-ink-muted); }
+  .writing-note a { display: inline-flex; gap: 10px; margin-top: 18px; font-size: 13px; font-weight: 500; color: var(--color-accent); }
+
+  @media (max-width: 800px) {
+    .resume-header { grid-template-columns: 1fr; gap: 36px; align-items: start; }
+    .download-panel { max-width: 360px; }
+    .resume-section { grid-template-columns: 150px minmax(0, 1fr); gap: 36px; }
+    .project { grid-template-columns: 180px minmax(0, 1fr); gap: 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .resume-page { padding-top: 54px; padding-bottom: 72px; }
+    .resume-header { padding-bottom: 42px; }
+    h1 { font-size: 42px; }
+    .summary { margin-top: 20px; font-size: 17px; }
+    .resume-section { grid-template-columns: 1fr; gap: 22px; padding: 36px 0; }
+    .resume-section > h2 { font-size: 13px; }
+    .role-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .project { grid-template-columns: 1fr; gap: 7px; }
+    .capability-list > div { grid-template-columns: 1fr; gap: 5px; }
+  }
+
+  @media print {
+    @page { size: A4 portrait; margin: 12mm 14mm; }
+    :global(html),
+    :global(body) { width: 100%; background: #fff !important; color: #171717 !important; }
+    :global(body) { font-family: Arial, Helvetica, sans-serif; line-height: 1.35; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    :global(.page-frame) { max-width: none; border: 0; }
+    :global(.page-frame::before),
+    :global(.page-frame::after) { display: none; }
+    :global(header.nav-shell),
+    :global(.page-frame > footer) { display: none !important; }
+    .resume-page { width: 100%; max-width: none; padding: 0; }
+    .resume-header { display: block; padding-bottom: 6mm; }
+    .print-name { display: block; font-size: 25pt; line-height: 1; font-weight: 700; letter-spacing: -.025em; color: #111; }
+    h1 { display: none; }
+    .summary { max-width: 155mm; margin-top: 3mm; font-size: 10pt; line-height: 1.4; color: #3f3f3f; }
+    .contact-links { gap: 3mm 6mm; margin-top: 3.5mm; font-size: 8.5pt; line-height: 1.2; color: #555; }
+    .contact-links a { color: #111; }
+    .contact-links a span { display: none; }
+    .download-panel { display: none; }
+    .resume-body { border-top: 1px solid #777; }
+    .resume-section { grid-template-columns: 29mm minmax(0, 1fr); gap: 7mm; padding: 5mm 0; border-color: #d6d6d6; break-inside: avoid; }
+    .resume-section > h2 { padding-top: .5mm; font-size: 8pt; line-height: 1.2; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #555; }
+    .resume-section > h2,
+    .role-head p,
+    .role-head time,
+    .role-summary,
+    .experience li,
+    .project p,
+    .capability-list dd,
+    .writing-note p { color: #444; }
+    .role-head { gap: 6mm; }
+    .role-head h3 { font-size: 14pt; line-height: 1.1; }
+    .role-head p { margin-top: 1mm; font-size: 8.5pt; }
+    .role-head time { font-size: 8.5pt; }
+    .role-summary { max-width: none; margin-top: 3mm; font-size: 8.7pt; line-height: 1.45; }
+    .experience ul { gap: 1.5mm; margin-top: 3mm; padding-left: 4mm; }
+    .experience li { padding-left: 1mm; font-size: 8.3pt; line-height: 1.42; }
+    .experience li::marker { color: #555; }
+    .project-list,
+    .project,
+    .capability-list,
+    .capability-list > div { border-color: #ddd; }
+    .project { grid-template-columns: 42mm minmax(0, 1fr); gap: 5mm; padding: 2.2mm 0; }
+    .project h3 { font-size: 8.5pt; line-height: 1.35; color: #111; }
+    .project h3 span,
+    .writing-note a { display: none; }
+    .project p { font-size: 8pt; line-height: 1.4; }
+    .capability-list > div { grid-template-columns: 31mm minmax(0, 1fr); gap: 5mm; padding: 1.8mm 0; }
+    .capability-list dt,
+    .capability-list dd { font-size: 8.2pt; line-height: 1.35; }
+    .writing-note p { font-size: 8.5pt; line-height: 1.4; }
+    .final-section { border-bottom: 0; }
+  }
+
+  @media screen and (min-width: 1001px) {
+    .resume-page { padding-block: 67px 84px; }
+    .resume-header { gap: 63px; padding-bottom: 51px; }
+    h1 { font-size: clamp(34px, 4.2vw, 53px); }
+    .summary { margin-top: 21px; font-size: 17px; }
+    .resume-section { padding-block: 42px; gap: 49px; }
+    .role-head h3 { font-size: 21px; }
+  }
+</style>

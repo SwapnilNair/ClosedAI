@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Swapnil Nair</title>
+  <desc id="desc">AI, data, and systems engineering</desc>
+  <rect width="1200" height="630" fill="#08090b"/>
+  <g stroke="rgba(255,255,255,.06)">
+    <path d="M0 70h1200M0 140h1200M0 210h1200M0 280h1200M0 350h1200M0 420h1200M0 490h1200M0 560h1200"/>
+    <path d="M100 0v630M200 0v630M300 0v630M400 0v630M500 0v630M600 0v630M700 0v630M800 0v630M900 0v630M1000 0v630M1100 0v630"/>
+  </g>
+  <rect x="54" y="54" width="1092" height="522" fill="none" stroke="rgba(255,255,255,.16)"/>
+  <path d="M54 74V54h20M1126 54h20v20M54 556v20h20M1126 576h20v-20" fill="none" stroke="#aadc8a"/>
+  <text x="92" y="116" fill="#aadc8a" font-family="monospace" font-size="18" letter-spacing="4">CLOSED AI · OPERATOR PROFILE</text>
+  <text x="92" y="294" fill="#e8e8ea" font-family="Arial, sans-serif" font-size="76" font-weight="600">Swapnil Nair</text>
+  <text x="92" y="374" fill="#888991" font-family="Arial, sans-serif" font-size="42">AI · data · systems engineering</text>
+  <text x="92" y="522" fill="#6f7078" font-family="monospace" font-size="18" letter-spacing="2">BUILD → OBSERVE → REASON → OPERATE</text>
+</svg>

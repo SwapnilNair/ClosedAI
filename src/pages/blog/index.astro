@@ -1,63 +1,29 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PostList from '../../components/PostList.astro';
+import IndexHeader from '../../components/IndexHeader.astro';
+import WritingList from '../../components/WritingList.astro';
 import { getCollection } from 'astro:content';
+import { publishedPosts } from '../../utils/content';
 
-const posts = await getCollection('blog');
-const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = publishedPosts(await getCollection('blog'));
+const topics = [...new Set(posts.flatMap((post) => post.data.topics))].sort();
 ---
 
-<Base title="Writing — closedai.in" description="Writing on AI security, data infrastructure, and building things that don't break.">
-
-  <section class="page-hero">
-    <p class="eyebrow">All posts</p>
-    <h1>Writing<span class="period">.</span></h1>
-    <p class="sub">
-      On AI security, data infrastructure, and building things that don't break.
-    </p>
-  </section>
-
-  <section class="post-section">
-    <PostList posts={sorted} />
-  </section>
-
+<Base title="Writing — Swapnil Nair" description="Writing by Swapnil Nair on technology, business, markets, systems, and other interests.">
+  <IndexHeader title="Writing" description="Notes from building and breaking production systems, plus the occasional detour into history, machines and arguments." />
+  <nav class="topics" aria-label="Writing topics">
+    <a href="/blog" aria-current="page">All</a>
+    {topics.map((topic) => <a href={`/blog/topics/${encodeURIComponent(topic.toLowerCase().replaceAll(' ', '-'))}`}>{topic}</a>)}
+  </nav>
+  <WritingList posts={posts} />
 </Base>
-
 <style>
-  .page-hero {
-    text-align: center;
-    padding: 64px var(--space-page) 56px;
-    border-bottom: var(--border);
-  }
+  .topics { display: flex; flex-wrap: wrap; gap: 8px; padding: 20px var(--space-page); border-bottom: var(--border-faint); }
+  .topics a { border: 1px solid #2a2c2f; padding: 7px 12px; font-size: 14px; color: var(--color-ink-muted); }
+  .topics a:hover, .topics a[aria-current] { color: var(--color-ink); border-color: var(--color-border-strong); }
 
-  .eyebrow {
-    font-size: var(--font-size-xs);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 16px;
-  }
-
-  h1 {
-    font-size: var(--font-size-hero);
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 1.0;
-    margin-bottom: 16px;
-  }
-
-  .period {
-    color: var(--color-accent);
-  }
-
-  .sub {
-    font-size: var(--font-size-base);
-    color: var(--color-ink-muted);
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  .post-section {
-    padding: var(--space-section) var(--space-page);
+  @media screen and (min-width: 1001px) {
+    .topics { padding-block: 18px; }
+    .topics a { padding: 6px 11px; font-size: 13px; }
   }
 </style>
