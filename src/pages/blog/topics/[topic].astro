@@ -16,7 +16,6 @@ const { topic, posts } = Astro.props;
 <Base title={`${topic} writing — Swapnil Nair`} description={`Articles about ${topic} by Swapnil Nair.`}>
   <section class="topic-head">
     <a class="mono-label" href="/blog">← Writing index</a>
-    <span class="mono-label accent">TOPIC · {String(posts.length).padStart(2, '0')} ARTICLES</span>
     <h1>{topic}</h1>
     <p>Articles and field notes filed under {topic.toLowerCase()}.</p>
   </section>
@@ -25,7 +24,6 @@ const { topic, posts } = Astro.props;
 
 <style>
   .topic-head { padding: 72px var(--space-page); }
-  .topic-head > span { display: block; margin-top: 60px; }
   h1 { margin-top: 17px; font-size: var(--font-size-hero); letter-spacing: -.04em; }
   p { margin-top: 14px; font-size: 18px; color: var(--color-ink-muted); }
 

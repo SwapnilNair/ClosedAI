@@ -41,3 +41,21 @@ The site is fully static. There is no CMS, database, or production JavaScript ru
 Edit `src/data/curated.json` to add or update entries on `/curated`. Each entry has a `title` and a `links` array of `{ "url": "https://…", "label": "Link label" }` objects. The first link is the title's destination; entries with multiple links display all of them below the title. Array order controls the default display order.
 
 The collection is a snapshot imported from the Obsidian article stash, with duplicate URLs and tracking parameters removed. The site builds entirely from this repository; it does not read or modify the vault. Local image attachments and notes without links are not included.
+
+## Reading recommendations
+
+Edit the `books` list in `src/data/reading.md` to update `/reading`. Books appear in file order, so reorder the entries to change the page. Each book needs a `title` and `author`. Personal `note` and book `url` fields are optional; books without notes display just their title and author.
+
+Add another entry inside the file's Markdown frontmatter:
+
+```yaml
+  - title: "Book title"
+    author: "Author name"
+    note: |
+      Your short note on why this book is worth reading.
+
+      You can add another paragraph too.
+    url: "https://example.com/book"
+```
+
+Keep the indentation shown above. Remove `note` or `url` if you don't need them. Use `books: []` to show the coming-soon message. Run `npm run check` and `npm run build` after editing; the page validates entries when it builds.
