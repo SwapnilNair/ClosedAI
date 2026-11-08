@@ -4,7 +4,7 @@ description: "As AI makes building easier, I think imagination is becoming the b
 publishedAt: 2026-11-08
 topics: ["Opinion", "AI", "Product Engineering"]
 featured: true
-draft: true
+draft: false
 ---
 
 I keep wondering how many ideas I have quietly abandoned because I had already decided that building them would be too much work. Usually there wasn't a particularly rigorous assessment involved; I would think about the unfamiliar tools, the weekends it might eat up, and the likelihood of getting stuck somewhere boring, and that was enough to send the idea back to wherever it had come from.

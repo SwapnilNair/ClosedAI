@@ -4,7 +4,7 @@ description: "Cleaning up my Android TV with AI, a little tinkering, and more co
 publishedAt: 2026-11-08
 topics: ["Side Projects", "Android", "Product Engineering"]
 featured: false
-draft: true
+draft: false
 ---
 
 I wanted to watch something on my television, which apparently required first negotiating with a home screen that had rather strong opinions about what I should watch, which services I should discover, and how much of my evening belonged to its recommendations. No, I don’t want a Hero Vida evooter. [I’m an Ather fanboy](/blog/the-ideal-ev-for-bangalore). Could you stop showing me ads for that, please? Somewhere inside this arrangement was a screen I had paid for, patiently waiting for permission to behave like one.

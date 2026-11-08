@@ -4,7 +4,7 @@ description: "Living with an Ather Rizta in Bangalore, from the HSR commute to a
 publishedAt: 2026-11-08
 topics: ["Opinion", "Electric Vehicles"]
 featured: false
-draft: true
+draft: false
 ---
 
 In 2024, I graduated and acquired a roughly 14 km commute from home to my office in HSR Layout, which is a perfectly reasonable distance until you remember that both ends of it are in Bangalore. I grew up here, and the traffic I remember from going to school in the 2010s feels almost pleasant compared to what the city has managed to achieve since. Getting to work was now a fairly substantial part of having a job.
