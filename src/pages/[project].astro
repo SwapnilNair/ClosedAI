@@ -1,0 +1,12 @@
+---
+import { projects } from '../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { project: project.slug },
+    props: { destination: project.url },
+  }));
+}
+
+return Astro.redirect(Astro.props.destination, 301);
+---

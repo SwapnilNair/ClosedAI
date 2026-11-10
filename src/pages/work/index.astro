@@ -3,13 +3,17 @@ import Base from '../../layouts/Base.astro';
 import IndexHeader from '../../components/IndexHeader.astro';
 import WorkCard from '../../components/WorkCard.astro';
 import { getCollection } from 'astro:content';
+import { projects } from '../../data/projects';
 const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Base title="Selected work — Swapnil Nair" description="Selected systems and product work across AI security, data infrastructure, cloud identity, and runtime engineering.">
-  <IndexHeader wideIntro title="Work" description="Selected systems and products across AI security, data infrastructure, and cloud engineering. What I built, the decisions behind it, and what made it into production." />
+<Base title="Selected work — Swapnil Nair" description="Selected work across AI security, systems engineering, and Mac apps.">
+  <IndexHeader wideIntro title="Work" description="From AI security and production systems to Mac apps built for everyday use and a little fun. Things I’ve built, the decisions behind them, and what you can try." />
   <section class="work-wrap">
-    <div class="work-grid">{work.map((item, index) => <WorkCard item={item} index={index} />)}</div>
+    <div class="work-grid">
+      {projects.map((project, index) => <WorkCard item={{ data: project }} index={index} href={`/${project.slug}`} />)}
+      {work.map((item, index) => <WorkCard item={item} index={index + projects.length} />)}
+    </div>
   </section>
 </Base>
 

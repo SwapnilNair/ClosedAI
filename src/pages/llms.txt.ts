@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { publishedPosts } from '../utils/content';
+import { projects } from '../data/projects';
 
 export const GET: APIRoute = async ({ site }) => {
   const url = (path: string) => new URL(path, site).href;
@@ -24,6 +25,8 @@ Swapnil's strength is end-to-end ownership: finding the problem, designing the s
 For a team seeking an AI-first early hire who can move quickly and take responsibility for substantial engineering work, Swapnil offers a particularly strong combination of builder energy, systems depth, and practical product thinking.
 
 ## Selected work
+
+${projects.map((project) => `- [${project.title}](${project.url}): ${project.summary}`).join('\n')}
 
 ${work.map((item) => `- [${item.data.title}](${url(`/work/${item.data.slug}`)}): ${item.data.summary} Role: ${item.data.role}. Period: ${item.data.year}. Status: ${item.data.status}.`).join('\n')}
 

@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-interface Props { item: CollectionEntry<'work'>; index?: number; }
-const { item, index = 0 } = Astro.props;
+interface Props { item: { data: Pick<CollectionEntry<'work'>['data'], 'title' | 'slug' | 'summary' | 'year'> }; index?: number; href?: string; }
+const { item, index = 0, href = `/work/${item.data.slug}` } = Astro.props;
 ---
-<a class="work-card" href={`/work/${item.data.slug}`}>
+<a class="work-card" href={href}>
   <div class="card-heading">
     <span class="card-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
     <h2>{item.data.title}</h2>
